@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import instance from '../../axiosConfig/instance';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { moviesAction } from '@/store/slices/movie';
 
 export default function Details() {
   const { id } = useParams();
   // const movie = useLoaderData();
   const [movie, setMovie] = useState([]);
   const loader = useSelector((state) => state.loader.loader);
+
+  // const movie = useSelector((state) => state.movies.movies);
+  // const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(moviesAction({id:id}))
+  },[])
 
   useEffect(() => {
     instance
@@ -23,10 +32,8 @@ export default function Details() {
       });
   }, []);
 
-  console.log(id);
-  console.log(movie);
   return (
-    <div className=' mt-6 pt-1'>
+    <div className=' pt-1'>
       {loader ? (
         <Stack>
           <div className='flex justify-center'>
@@ -52,7 +59,7 @@ export default function Details() {
         </Stack>
       ) : (
         <div className='flex justify-center'>
-          <div className='max-w-[1300px] flex justify-center flex-cols mt-2 flex-wrap pt-4  '>
+          <div className='max-w-[1300px] flex justify-center flex-cols mt-12 flex-wrap pt-4  '>
             <div className='flex flex-col items-center sm:w-[600px] w-9/12 mx-2'>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

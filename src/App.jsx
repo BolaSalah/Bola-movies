@@ -10,12 +10,13 @@ import Price from './Pages/Price/Price';
 import Details from './Pages/Movies/Details';
 import AppLayout from './AppLayout';
 import NotFound from './Pages/NotFound/NotFound';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from './store/store';
 import Movies from './Pages/Movies/Movies';
 import Favorite from './Pages/Favorite/Favorite';
 import { ThemeProvider } from './contexts/theme';
 import { useState } from 'react';
+import Search from './Pages/Search/Search';
 
 const routes = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const routes = createBrowserRouter([
       { path: '/Favorite', element: <Favorite /> },
       { path: '/price', element: <Price /> },
       { path: '/movies', element: <Movies /> },
+      { path: '/search', element: <Search /> },
       { path: '/details/:id', element: <Details /> },
       // { path: '/details/:id', element: <Details />, loader: prdDetailsLoader, errorElement:<NotFound /> },
     ],
@@ -34,13 +36,9 @@ const routes = createBrowserRouter([
 ]);
 
 function App() {
-
-  const [theme,setTheme] = useState("light")
-  return  <ThemeProvider value={{theme,setTheme}}>
-  <Provider store={ store }>
+  return  <Provider store={ store }>
             <RouterProvider router={ routes } />
           </Provider>
-  </ThemeProvider>
   // (
   
     // <>
