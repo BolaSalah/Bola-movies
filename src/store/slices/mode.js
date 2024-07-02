@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const modeSlice = createSlice({
     name: "mode",
-    initialState: {mode:"light"},
+    initialState: {mode:"dark"},
     reducers: {
         changeMode: (state,action) => {
             state.mode = action.payload;

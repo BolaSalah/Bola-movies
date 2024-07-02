@@ -4,7 +4,6 @@ import { changeLoader } from "../store/slices/loader";
 
 // instance of axios
 const instance = axios.create({
-  // baseURL: 'https://fakestoreapi.com',
   baseURL: 'https://api.themoviedb.org/3',
   params: {
     api_key: '9ea3a0a5eda788de1a8738152ff4d406',
@@ -24,7 +23,6 @@ instance.interceptors.request.use((config) => {
 
 // response
 instance.interceptors.response.use((res) => {
-  
   store.dispatch(changeLoader(false))
   return res;
 }, (err) => {

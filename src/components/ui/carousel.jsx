@@ -135,16 +135,17 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
   const { orientation } = useCarousel()
 
   return (
-    (<div
+    <div
       ref={ref}
-      role="group"
-      aria-roledescription="slide"
+      role='group'
+      aria-roledescription='slide'
       className={cn(
-        ` shrink-0 grow-0 md:w-[70%] first:w-[100%]  md:first:w-[97.5%] md:first:ms-5 last:w-[100%] relative -top-4  sm:w-[33%] w-[50%] `,
-        orientation === "horizontal" ? "pl-4" : "pt-4",
+        ` shrink-0 grow-0 md:w-[70%] first:w-[100%]  md:first:w-[99%] md:first:ms-2 md:first:me-1 last:w-[100%] relative -top-4  sm:w-[33%] w-[50%] `,
+        orientation === 'horizontal' ? 'pl-4' : 'pt-4',
         className
       )}
-      {...props} />)
+      {...props}
+    />
   );
 })
 CarouselItem.displayName = "CarouselItem"

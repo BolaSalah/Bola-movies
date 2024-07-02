@@ -6,29 +6,28 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-
-import { moviesAction } from '@/store/slices/movie';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import instance from '../../../axiosConfig/instance';
 import { useNavigate } from 'react-router-dom';
 
 export function Slider() {
+
   const [moviesList, setMoviesList] = useState([]);
-  const [randomPage, setRandomPage] = useState(4);
+  const modeState = useSelector((state) => state.mode.mode);
 
   useEffect(() => {
     instance
-      .get('movie/popular', { params: { page: randomPage, limit: 5 } })
+      .get('movie/popular', { params: { page: 3 } })
       .then((res) => {
-        setMoviesList(res.data.results.slice(0, 8));
+        setMoviesList(res.data.results.slice(7,19));
       })
       .catch((err) => {
         console.log(err);
       });
   });
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const toDetails = (id) => {
     navigate(`/details/${id}`);
     window.scroll({
@@ -36,9 +35,6 @@ export function Slider() {
       behavior: 'smooth',
     });
   };
-
-  const modeState = useSelector((state) => state.mode.mode);
-
 
   return (
     <div className='flex justify-center flex-col py-10' id="WHAT'S-ON">
@@ -79,7 +75,7 @@ export function Slider() {
                                  bg-black text-white transition duration-1000 
                                    opacity-0 hover:opacity-70 hover:cursor-pointer'
                       >
-                        <p className=' text-xl border-b p-2 mr-8 mt-10 '>
+                        <p className=' text-xl border-b mr-4 '>
                           more
                         </p>
                       </div>

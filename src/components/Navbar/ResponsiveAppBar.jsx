@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { SwitchDemo } from './../ui/demo/Switch ';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeMode } from '@/store/slices/mode';
+import { useSelector } from 'react-redux';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
 export default function ResponsiveAppBar() {
-  const [show, setShow] = useState(false);
-  // const [mode,setMode] = useState();
-  const toggleShow = () => setShow(!show);
   const modeState = useSelector((state) => state.mode.mode);
-  const dispatch = useDispatch();
-
-  const changeModeBtn = () => {
-    dispatch(changeMode(modeState == 'light' ? 'dark' : 'light'));
-  };
 
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
@@ -35,7 +26,7 @@ export default function ResponsiveAppBar() {
     <>
       <div
         className={`
-       sticky top-0 z-10 flex justify-between items-center py-2  mx-auto px-4  opacity-70
+       sticky top-0 z-10 flex justify-between items-center py-0.5  mx-auto px-6  opacity-80 hover:opacity-90
       ${modeState == 'light' ? 'bg-[#3700b3]' : 'bg-black text-white'}
       `}
       >
@@ -51,7 +42,6 @@ export default function ResponsiveAppBar() {
         >
           Movies
         </Link>
-
         {/* Desktop Navigation */}
         <ul className='hidden md:flex'>
           {navItems.map((item) => (
@@ -69,12 +59,12 @@ export default function ResponsiveAppBar() {
                   : {};
               }}
               key={item.id}
-              className={`mx-1 cursor-pointer rounded-xl px-5 py-3
+              className={`mx-1 cursor-pointer px-5 py-3
                  duration-500
                  ${
                    modeState == 'light'
-                     ? 'text-white hover:bg-white hover:text-black  '
-                     : '  hover:text-black hover:bg-[#00df9a]  text-[#00df9a]'
+                     ? 'hover:underline hover:text-black text-white'
+                     : 'hover:underline hover:text-white text-[#00df9a]'
                  }`}
             >
               {item.text}
@@ -89,7 +79,6 @@ export default function ResponsiveAppBar() {
             <SwitchDemo></SwitchDemo>
           </li>
         </ul>
-
         {/* Mobile Navigation Icon */}
         <div
           onClick={handleNav}
@@ -97,13 +86,16 @@ export default function ResponsiveAppBar() {
         >
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
-
         {/* Mobile Navigation Menu */}
         <ul
           className={
             nav
               ? `fixed md:hidden left-0 top-0 w-[40%] h-full ease-in-out duration-500
-                  ${modeState == 'light' ? 'bg-[#3700b3]' : 'bg-black text-white'}
+                  ${
+                    modeState == 'light'
+                      ? 'bg-[#3700b3]'
+                      : 'bg-black text-white'
+                  }
                 `
               : 'ease-in-out w-[40%] duration-500 fixed top-0 bottom-0 left-[-100%]'
           }
@@ -112,11 +104,9 @@ export default function ResponsiveAppBar() {
           <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>
             Movies
           </h1>
-
           {/* Mobile Navigation Items */}
           <div className='flex flex-col mx-2  '>
             {navItems.map((item) => (
-              //   className=' ms-4 p-1 mt-1 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600'
               <NavLink
                 to={`${item.url}`}
                 onClick={() => {
@@ -134,21 +124,15 @@ export default function ResponsiveAppBar() {
                 className={` cursor-pointer rounded-xl px-5 py-3 duration-500
                  ${
                    modeState == 'light'
-                    ? 'text-white hover:bg-white hover:text-black'
-                    : 'hover:text-black hover:bg-[#00df9a] text-[#00df9a]'
+                     ? 'hover:underline hover:text-black text-white'
+                     : 'hover:underline hover:text-white text-[#00df9a]'
                  }`}
               >
                 {item.text}
               </NavLink>
             ))}
             <div className='flex mt-1 '>
-              <li
-                onClick={() => {
-                  changeModeBtn();
-                }}
-              >
-                <SwitchDemo></SwitchDemo>
-              </li>
+              <SwitchDemo></SwitchDemo>
             </div>
           </div>
         </ul>

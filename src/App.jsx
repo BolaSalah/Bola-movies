@@ -1,21 +1,12 @@
-import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter } from 'react-router-dom';
 import './App.css'
-import ResponsiveAppBar from './components/Navbar/ResponsiveAppBar';
-import FormOne from './components/forms/FormOne';
-import FormTwo from './components/forms/FormTwo';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './Pages/Home/Home';
-import Blog from './Pages/Favorite/Favorite';
-import Price from './Pages/Price/Price';
-// import Details, { loader as prdDetailsLoader } from './Pages/Products/Details';
 import Details from './Pages/Movies/Details';
 import AppLayout from './AppLayout';
 import NotFound from './Pages/NotFound/NotFound';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './store/store';
 import Movies from './Pages/Movies/Movies';
-import Favorite from './Pages/Favorite/Favorite';
-import { ThemeProvider } from './contexts/theme';
-import { useState } from 'react';
 import Search from './Pages/Search/Search';
 
 const routes = createBrowserRouter([
@@ -24,8 +15,6 @@ const routes = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { index: true, element: <Home /> },
-      { path: '/Favorite', element: <Favorite /> },
-      { path: '/price', element: <Price /> },
       { path: '/movies', element: <Movies /> },
       { path: '/search', element: <Search /> },
       { path: '/details/:id', element: <Details /> },

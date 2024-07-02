@@ -16,7 +16,6 @@ export function CarouselDemo() {
   const [randomPage, setRandomPage] = useState(Math.ceil(Math.random() * 40));
   
   useEffect(() => {
-    // setRandomPage(Math.ceil(Math.random()*10));
     instance.get("movie/popular", { params: { page: randomPage }}).then((res) => {
         setMoviesList(res.data.results)
      }).catch((err) => {
@@ -39,7 +38,6 @@ export function CarouselDemo() {
                       // src={`https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg`}
                       alt='home'
                     />
-                    {/* <span>{index+1}</span> */}
                   </CardContent>
                 </Card>
               </div>

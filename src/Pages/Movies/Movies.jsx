@@ -1,37 +1,33 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import "../../index.css"
-
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import instance from '../../axiosConfig/instance';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
-
-
-import { moviesAction } from '@/store/slices/movie';
+import { IoStarSharp } from 'react-icons/io5';
+import { IoIosEye } from 'react-icons/io';
+import instance from '@/axiosConfig/instance';
 
 export default function Movies() {
-  // const [moviesList, setMoviesList] = useState([]);
   const [counter, setCounter] = useState(1);
+  const [moviesList, setMoviesList] = useState([]);
   const navigate = useNavigate();
   const loader = useSelector((state) => state.loader.loader);
-  const [bola, setBola] = useState("");
 
-// import { moviesAction } from '@/store/slices/movie';
-  const dispatch = useDispatch();
-  const moviesList = useSelector((state)=> state.movies.movies) 
   useEffect(() => {
-    dispatch(moviesAction({ page: counter }))
+    instance.get("movie/popular", { params: { page: counter } }).then((res) => {
+      setMoviesList(res.data.results)
+    }).catch((err) => {
+      console.log(err);
+    })
   }, [counter])
-  
 
+  const modeState = useSelector((state) => state.mode.mode);
   // useEffect(() => {
   //   instance.get('/product', {
   //     // headers: { "Content-Type": "aplication/json" },
@@ -50,28 +46,20 @@ export default function Movies() {
   //     : instance.get('search/movie', { params: { page: counter, query: bola } }).then((res) => setMoviesList(res.data.results));
   // }, [counter, bola]);
 
-
+// To next or prev page
   const toAnotherPage = (e) => {
     (e.target.value == "next") ? setCounter(counter + 1) : setCounter(counter - 1);
-    window.scroll({
-      top: 0,
-      behavior:'smooth'
-    })
-  }
-  const movieName = (e) => {
-    setBola(e.target.value)
-    console.log(bola);
-  }
+  };
 
   return (
     <>
       {loader ? (
         <div className='flex justify-center'>
-          <div className='max-w-[1800px] flex justify-center mt-6'>
+          <div className=' flex justify-center mt-16'>
             <div className='flex flex-row flex-wrap justify-center w-full'>
               {Array.apply(null, { length: 8 }).map((e, i) => (
                 <Stack className='sm:w-2/4 md:w-1/4 px-3 mb-10' key={i}>
-                  <div className='w-11/12'>
+                  <div className='w-11/12 bg-[#2f3856]'>
                     <Skeleton
                       variant='rectangular'
                       height={240}
@@ -88,16 +76,16 @@ export default function Movies() {
           </div>
         </div>
       ) : (
-        <div className='flex justify-center '>
-          <div className='max-w-[1300px] flex justify-center flex-col '>
-            <div className='flex flex-row flex-wrap mt-16'>
+        <div className='flex justify-center'>
+          <div className='flex justify-center flex-col '>
+            <div className='flex flex-row flex-wrap mt-16 '>
               {moviesList.map((movie) => (
                 <div
-                  className='sm:w-2/4 md:w-1/4 mb-10  px-3 text-white '
+                  className='sm:w-2/4 md:w-1/4 mb-10  px-3 text-white rounded-lg'
                   key={movie.id}
                 >
                   <button
-                    className='bg-[#2f3856]'
+                    className='bg-[#2f3856] rounded-lg'
                     onClick={() => {
                       navigate(`/details/${movie.id}`);
                     }}
@@ -117,7 +105,7 @@ export default function Movies() {
                         className='h-60 mt-3 '
                         alt='green iguana'
                       />
-                      <CardContent className='mb-5'>
+                      <CardContent>
                         <Typography
                           variant='body2'
                           className='h-16 overflow-hidden'
@@ -125,29 +113,56 @@ export default function Movies() {
                           {movie.overview}
                         </Typography>
                       </CardContent>
+                      <div className='flex justify-between p-3'>
+                        <div className='flex justify-center items-center gap-2'>
+                          <div>
+                            <IoStarSharp className='text-[#ffff00]' />
+                          </div>
+                          <div>{String(movie.vote_average).slice(0, 3)}</div>
+                        </div>
+                        <div className='flex justify-center items-center gap-2'>
+                          <div>
+                            <IoIosEye />
+                          </div>
+                          <div>
+                            <p>{movie.vote_count}</p>
+                          </div>
+                        </div>
+                      </div>
                     </CardActionArea>
                   </button>
                 </div>
               ))}
-              <div className='mx-auto flex flex-row justify-center items-center mb-10'>
+              <div className='mx-auto flex flex-row justify-center items-center mb-10 '>
                 <button
-                  className={`me-6 bg-blue-900 rounded-md py-4 px-7 ${
-                    counter == 1 ? ' cursor-not-allowed text-white' : ''
-                  }`}
+                  className={`flex justify-center px-10 py-3 rounded-lg ${
+                    modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
+                  } 
+                    ${counter == 1 ? ' cursor-not-allowed text-red-700' : ''}`}
                   value={'previous'}
                   onClick={(e) => {
                     toAnotherPage(e);
+                    window.scroll({ top: 0 });
                   }}
                   disabled={counter == 1}
                 >
                   prev
                 </button>
-                <div className='bg-red-900 p-5  rounded-md'>{counter}</div>
+                <div
+                  className={`flex justify-center px-4 py-3 mx-5 rounded-lg ${
+                    modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
+                  } `}
+                >
+                  {counter}
+                </div>
                 <button
-                  className='mx-6 bg-blue-900 rounded-md py-4 px-7'
+                  className={`flex justify-center px-10 py-3 rounded-lg text-white ${
+                    modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
+                  } `}
                   value={'next'}
                   onClick={(e) => {
                     toAnotherPage(e);
+                    window.scroll({ top: 0, behavior: 'smooth' });
                   }}
                 >
                   next

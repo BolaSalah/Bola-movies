@@ -40,11 +40,14 @@ export default function Moviewall() {
             ></div>
             <div className='mb-5 ms-3  text-[25px] font-bold'>WHAT'S ON</div>
           </div>
-          <div class=' grid  px-5 py-4'>
+          <div className='grid  px-5 py-4'>
             {movieOnMovieWall.map((movie, _index) => (
               <>
                 {_index == 0 && (
-                  <div className=' bg-red-500 w-full col-start-1 col-span-2 row-start-1 row-span-2 relative'>
+                  <div
+                    key={_index}
+                    className=' w-full col-start-1 col-span-2 row-start-1 row-span-2 relative'
+                  >
                     <img
                       className='w-full'
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -67,7 +70,7 @@ export default function Moviewall() {
                 )}
 
                 {_index > 0 && _index < 9 && (
-                  <div className=' bg-red-500 relative '>
+                  <div key={_index} className=' bg-red-500 relative '>
                     <img
                       className='w-full'
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -94,7 +97,10 @@ export default function Moviewall() {
                   </div>
                 )}
                 {_index == 9 && (
-                  <div className=' bg-red-500 row-start-3 row-span-2 col-start-3 col-span-2 relative'>
+                  <div
+                    key={_index}
+                    className=' bg-red-500 row-start-3 row-span-2 col-start-3 col-span-2 relative'
+                  >
                     <img
                       className='w-full'
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -119,8 +125,10 @@ export default function Moviewall() {
             ))}
           </div>
           <div
-                      className='flex justify-center my-6 hover:cursor-pointer '
-                      onClick={()=>{navigate("movies"),window.scroll({top:0})}}
+            className='flex justify-center my-6 hover:cursor-pointer '
+            onClick={() => {
+              navigate('movies'), window.scroll({ top: 0 });
+            }}
           >
             <p
               className={`flex justify-center px-10 py-3 rounded-lg ${
