@@ -72,9 +72,9 @@ export default function ResponsiveAppBar() {
           ))}
           <li
             className='py-3 '
-            onClick={() => {
-              changeModeBtn();
-            }}
+            // onClick={() => {
+            //   changeModeBtn();
+            // }}
           >
             <SwitchDemo></SwitchDemo>
           </li>

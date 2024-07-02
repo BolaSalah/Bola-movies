@@ -32,6 +32,7 @@ export default function Search() {
       });
   }, [searchValue]);
 
+
   return (
     <div>
       <div className='ps-4 mb-11'>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import "../../index.css"
+import '../../index.css';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -20,12 +20,15 @@ export default function Movies() {
   const loader = useSelector((state) => state.loader.loader);
 
   useEffect(() => {
-    instance.get("movie/popular", { params: { page: counter } }).then((res) => {
-      setMoviesList(res.data.results)
-    }).catch((err) => {
-      console.log(err);
-    })
-  }, [counter])
+    instance
+      .get('movie/popular', { params: { page: counter } })
+      .then((res) => {
+        setMoviesList(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [counter]);
 
   const modeState = useSelector((state) => state.mode.mode);
   // useEffect(() => {
@@ -36,7 +39,7 @@ export default function Movies() {
   //     // }
   //   }).then((res) => {
   //     setPrd(res.data);
-  //   }).catch((err) => 
+  //   }).catch((err) =>
   //     console.log(err);
   //   });
   // }, [])
@@ -46,9 +49,11 @@ export default function Movies() {
   //     : instance.get('search/movie', { params: { page: counter, query: bola } }).then((res) => setMoviesList(res.data.results));
   // }, [counter, bola]);
 
-// To next or prev page
+  // To next or prev page
   const toAnotherPage = (e) => {
-    (e.target.value == "next") ? setCounter(counter + 1) : setCounter(counter - 1);
+    e.target.value == 'next'
+      ? setCounter(counter + 1)
+      : setCounter(counter - 1);
   };
 
   return (

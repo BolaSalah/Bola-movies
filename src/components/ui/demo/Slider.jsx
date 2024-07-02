@@ -25,7 +25,7 @@ export function Slider() {
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[]);
 
   const navigate = useNavigate();
   const toDetails = (id) => {

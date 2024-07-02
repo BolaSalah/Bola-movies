@@ -11,17 +11,19 @@ import { useEffect, useState } from 'react';
 import instance from '../../../axiosConfig/instance';
 
 export function CarouselDemo() {
-
   const [moviesList, setMoviesList] = useState([]);
   const [randomPage, setRandomPage] = useState(Math.ceil(Math.random() * 40));
-  
+
   useEffect(() => {
-    instance.get("movie/popular", { params: { page: randomPage }}).then((res) => {
-        setMoviesList(res.data.results)
-     }).catch((err) => {
-        console.log(err);
+    instance
+      .get('movie/popular', { params: { page: randomPage } })
+      .then((res) => {
+        setMoviesList(res.data.results);
       })
-    }, [randomPage]);
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [randomPage]);
 
   return (
     <div className='flex justify-center items-center  '>
