@@ -37,7 +37,7 @@ export function Slider() {
   };
 
   return (
-    <div className='flex justify-center flex-col py-10' id="WHAT'S-ON">
+    <div className='flex justify-center flex-col py-10'>
       <div className='flex justify-center'>
         <Carousel
           opts={{
@@ -45,7 +45,7 @@ export function Slider() {
           }}
           className='w-9/12'
         >
-          <div className='flex ms-4 pb-4'>
+          <div className='flex ms-2 pb-4'>
             <div
               className={`w-3 rounded-md h-10 ${
                 modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'

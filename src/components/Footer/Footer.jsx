@@ -1,135 +1,131 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import '../../App.css';
 
 export default function Footer() {
+  const mode = useSelector((state) => state.mode.mode);
+  const [hoverText, setHoverText] = useState('');
+
+  useEffect(() => {
+    mode == 'light'
+      ? setHoverText('textHoverLight')
+      : setHoverText('textHoverDark');
+  });
+
+  const AboutFooterItems = [
+    { id: 1, text: 'About Us', url: '#' },
+    { id: 2, text: 'FAQ', url: '#' },
+    { id: 3, text: 'Careers', url: '#' },
+    { id: 4, text: 'Contact Us', url: '#' },
+  ];
+  const ExploreFooterItems = [
+    { id: 2, text: 'Movies', url: 'movies' },
+    { id: 3, text: 'Search', url: 'search' },
+    { id: 4, text: 'Coming Soon', url: '#' },
+  ];
+
+  const LEGALFooterItems = [
+    { id: 1, text: 'Privacy Policy', url: '#' },
+    { id: 2, text: 'Licensing', url: '#' },
+    { id: 3, text: 'Terms & Conditions', url: '#' },
+    { id: 4, text: 'Terms of Use', url: '#' },
+  ];
+  
+  const HELPFooterItems = [
+    { id: 1, text: 'Facebook', url: 'https://www.facebook.com/Bolasalah99/' },
+    { id: 2, text: 'Discord Server', url: 'https://www.discord.com' },
+    { id: 3, text: 'Twitter', url: 'https://www.x.com/' },
+    { id: 4, text: 'whatsapp', url: 'https://www.whatsapp.com' },
+  ];
+
   return (
     <>
       <footer className=''>
         <div className='mx-auto w-full '>
           <div className='grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 mx-10'>
+            {/* About-footer-part */}
             <div>
-              <h2 className='mb-6 font-bold uppercase'>About</h2>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
+              >
+                About
+              </h2>
               <ul className='  font-medium'>
-                <li className='mb-4'>
-                  <a href='#' className=' hover:underline'>
-                    About Us
-                  </a>
-                </li>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    FAQ
-                  </a>
-                </li>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    Contact Us
-                  </a>
-                </li>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    Careers
-                  </a>
-                </li>
+                {AboutFooterItems.map((ele) => (
+                  <li className='mb-4'>
+                    <a
+                      href={ele.url}
+                      className={`hover:underline ${hoverText}`}
+                    >
+                      {ele.text}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
+            {/* Explore-footer-part */}
             <div>
-              <h2 className='mb-6 font-bold uppercase '>Explore Our Site</h2>
-              <ul className=' dark:text-gray-400 font-medium'>
-                <li className='mb-4'>
-                  <a href="/#WHAT'S-ON" className='hover:underline'>
-                    What's On
-                  </a>
-                </li>
-                <li className='mb-4'>
-                  <Link
-                    to={'movies'}
-                    onClick={() => {
-                      window.scroll({ top: 0 });
-                    }}
-                    className='hover:underline'
-                  >
-                    Movies
-                  </Link>
-                </li>
-                <li className='mb-4'>
-                  <Link
-                    to={'search'}
-                    className='hover:underline'
-                  >
-                    Search
-                  </Link>
-                </li>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    Coming Soon
-                  </a>
-                </li>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
+              >
+                Explore Our Site
+              </h2>
+              <ul className='  font-medium'>
+                {ExploreFooterItems.map((ele) => (
+                  <li className='mb-4'>
+                    <Link
+                      to={`${ele.url}`}
+                      onClick={() => {
+                        window.scroll({ top: 0 });
+                      }}
+                      className={`hover:underline ${hoverText}`}
+                    >
+                      {ele.text}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
+            {/* Legal-footer-part */}
             <div>
-              <h2 className='mb-6 font-bold uppercase '>Legal</h2>
-              <ul className=' dark:text-gray-400 font-medium'>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    Privacy Policy
-                  </a>
-                </li>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    Licensing
-                  </a>
-                </li>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    Terms &amp; Conditions
-                  </a>
-                </li>
-                <li className='mb-4'>
-                  <a href='#' className='hover:underline'>
-                    Terms of Use
-                  </a>
-                </li>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
+              >
+                Privacy Policy
+              </h2>
+              <ul className='  font-medium'>
+                {LEGALFooterItems.map((ele) => (
+                  <li className='mb-4'>
+                    <a
+                      href={ele.url}
+                      className={`hover:underline ${hoverText}`}
+                    >
+                      {ele.text}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
+            {/* HelpCenter-footer-part */}
             <div>
-              <h2 className='mb-6 font-bold uppercase '>Help center</h2>
-              <ul className=' font-medium'>
-                <li className='mb-4'>
-                  <Link
-                    target='blank'
-                    to={'https://www.facebook.com/Bolasalah99/'}
-                    className='hover:underline'
-                  >
-                    Facebook
-                  </Link>
-                </li>
-                <li className='mb-4'>
-                  <Link
-                    target='blank'
-                    to={'https://www.discord.com/'}
-                    className='hover:underline'
-                  >
-                    Discord Server
-                  </Link>{' '}
-                </li>
-                <li className='mb-4'>
-                  <Link
-                    target='blank'
-                    to={'https://www.x.com/'}
-                    className='hover:underline'
-                  >
-                    Twitter
-                  </Link>{' '}
-                </li>
-                <li className='mb-4'>
-                  <Link
-                    target='blank'
-                    to={'https://www.whatsapp.com/'}
-                    className='hover:underline'
-                  >
-                    whatsapp
-                  </Link>
-                </li>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
+              >
+                Help center
+              </h2>
+              <ul className='  font-medium'>
+                {HELPFooterItems.map((ele) => (
+                  <li className='mb-4'>
+                    <Link
+                      to={`${ele.url}`}
+                      target='blank'
+                      className={`hover:underline ${hoverText}`}
+                    >
+                      {ele.text}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -138,7 +134,11 @@ export default function Footer() {
               © 2024 Bola Salah
             </span>
             <div className='flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse'>
-              <Link target='blank' to={'https://www.facebook.com/Bolasalah99/'}>
+              <Link
+                target='blank'
+                className={`${hoverText}`}
+                to={'https://www.facebook.com/Bolasalah99/'}
+              >
                 <svg
                   className='w-4 h-4'
                   aria-hidden='true'
@@ -157,7 +157,7 @@ export default function Footer() {
               <Link
                 to={'https://github.com/BolaSalah'}
                 target='blanc'
-                className=' hover:text-gray-900 dark:hover:text-white'
+                className={`${hoverText}`}
               >
                 <svg
                   className='w-4 h-4'

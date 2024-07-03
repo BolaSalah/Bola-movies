@@ -1,0 +1,10 @@
+.textHoverLight:hover {
+    color:#3700b3;
+    cursor: pointer;
+}
+
+.textHoverDark:hover{
+    color:#00df9a;
+    cursor: pointer;
+}
+

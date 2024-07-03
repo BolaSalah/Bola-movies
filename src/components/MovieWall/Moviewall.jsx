@@ -32,7 +32,7 @@ export default function Moviewall() {
     <div className='flex justify-center flex-col py-6'>
       <div className='flex justify-center'>
         <div className='w-9/12'>
-          <div className='flex ms-4'>
+          <div className='flex ms-2'>
             <div
               className={`w-3 rounded-md h-10 ${
                 modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
@@ -40,7 +40,7 @@ export default function Moviewall() {
             ></div>
             <div className='mb-5 ms-3  text-[25px] font-bold'>WHAT'S ON</div>
           </div>
-          <div className='grid  px-5 py-4'>
+          <div className='grid px-5 py-4 w-10/12 mx-auto'>
             {movieOnMovieWall.map((movie, _index) => (
               <>
                 {_index == 0 && (
@@ -132,7 +132,7 @@ export default function Moviewall() {
           >
             <p
               className={`flex justify-center px-10 py-3 rounded-lg ${
-                modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
+                modeState == 'light' ? 'bg-[#3700b3] hover:text-white' : 'bg-[#00df9a] hover:text-black'
               } `}
             >
               More

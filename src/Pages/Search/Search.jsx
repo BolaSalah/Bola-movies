@@ -22,6 +22,7 @@ export default function Search() {
     setSearchValue(e.target.value);
   };
   useEffect(() => {
+
     instance
       .get('search/movie', { params: { query: searchValue } })
       .then((res) => {
