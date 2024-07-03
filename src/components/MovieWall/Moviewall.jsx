@@ -66,9 +66,11 @@ export default function Moviewall() {
                                       flex justify-center items-center flex-col
                                        hover:cursor-pointer transition duration-1000'
                     >
-                      <p className='text-xl'>{movie.title}</p>
-                      <p className='p-5'>{movie.overview}</p>
-                      <p className='text-2xl border-b p-1'>more</p>
+                      <p className='md:text-xl text-[12px]'>{movie.title}</p>
+                      <p className='p-5 md:block hidden'>{movie.overview}</p>
+                      <p className='md:text-2xl text-[12px] border-b p-1'>
+                        more
+                      </p>
                     </div>
                   </div>
                 )}
@@ -89,14 +91,12 @@ export default function Moviewall() {
                                       flex justify-center items-center flex-col
                                        hover:cursor-pointer transition duration-1000'
                     >
-                      <p
-                        className={`lg:text-xl p-4 ${
-                          movie.title.length > 1 ? 'text-sm ' : ''
-                        }`}
-                      >
+                      <p className={`md:text-xl text-[12px] p-1`}>
                         {movie.title}
                       </p>
-                      <p className='text-2xl border-b p-1'>more</p>
+                      <p className='md:text-2xl text-[12px] border-b p-1'>
+                        more
+                      </p>
                     </div>
                   </div>
                 )}
@@ -115,13 +115,18 @@ export default function Moviewall() {
                         toDetails(movie.id);
                       }}
                       className='absolute top-0 w-full h-full opacity-0 hover:opacity-70
+                                    
                                       bg-black text-white 
                                       flex justify-center items-center flex-col
                                        hover:cursor-pointer transition duration-1000'
                     >
-                      <p className='text-xl'>{movie.title}</p>
-                      <p className='p-5'>{movie.overview.slice(0, 120)}</p>
-                      <p className='text-2xl border-b p-1'>more</p>
+                      <p className='md:text-xl text-[12px]'>{movie.title}</p>
+                      <p className='p-5 md:block hidden'>
+                        {movie.overview.slice(0, 110)}
+                      </p>
+                      <p className='md:text-2xl text-[12px] border-b p-1'>
+                        more
+                      </p>
                     </div>
                   </div>
                 )}
