@@ -53,7 +53,7 @@ export default function Movies() {
             <div className='flex flex-row flex-wrap mt-16 '>
               {moviesList.map((movie) => (
                 <div
-                  className='sm:w-2/4 md:w-1/4 mb-10  px-3 text-white rounded-lg'
+                  className='sm:w-2/4 md:w-1/4 mb-10 px-12 sm:px-3 text-white rounded-lg'
                   key={movie.id}
                 >
                   <button

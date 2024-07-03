@@ -126,7 +126,7 @@ useEffect(() => {
                 >
                   <div className='flex justify-center'>
                     <img
-                      className={`rounded-[50%] h-40 w-40 ${
+                      className={`rounded-[50%] sm:h-40 h-32 w-32 sm:w-40 ${
                         mode == 'light'
                           ? ' border-4 hover:border-[#3700b3]'
                           : ' border-4 hover:border-[#00df9a]'
