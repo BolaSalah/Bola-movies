@@ -18,12 +18,15 @@ export default function Search() {
   const [movieList, setMovieList] = useState([]);
   const loader = useSelector((state) => state.loader.loader);
   const navigate = useNavigate();
+
+  // set search value
   const movieName = (e) => {
     setSearchValue(e.target.value);
   };
-  useEffect(() => {
 
-    instance
+  // get movie by search
+  const getMovieSearch = async () => {
+    await instance
       .get('search/movie', { params: { query: searchValue } })
       .then((res) => {
         setMovieList(res.data.results);
@@ -31,8 +34,10 @@ export default function Search() {
       .catch((err) => {
         console.log(err);
       });
+  }
+  useEffect(() => {
+    getMovieSearch();
   }, [searchValue]);
-
 
   return (
     <div>
@@ -56,31 +61,35 @@ export default function Search() {
         </div>
         <div className='flex flex-row flex-wrap'>
           {loader ? (
-            <div className='flex justify-center'>
-              <div className='max-w-[1800px] flex justify-center mt-6'>
-                <div className='flex flex-row flex-wrap justify-center w-full'>
-                  {Array.apply(null, { length: 8 }).map((e, i) => (
-                    <Stack className='sm:w-2/4 md:w-1/4 px-3 mb-10' key={i}>
-                      <div className='w-11/12 bg-[#2f3856]'>
-                        <Skeleton
-                          variant='rectangular'
-                          height={240}
-                          className='xl:w-[300px] lg:w-[250px]'
-                        />
-                        <div className=' space-y-0 flex flex-col items-center'>
+            searchValue.length == 0 ? (
+              <div></div>
+            ) : (
+              <div className='flex justify-center'>
+                <div className='max-w-[1800px] flex justify-center mt-6'>
+                  <div className='flex flex-row flex-wrap justify-center w-full'>
+                    {Array.apply(null, { length: 8 }).map((e, i) => (
+                      <Stack className='sm:w-2/4 md:w-1/4 px-3 mb-10' key={i}>
+                        <div className='w-11/12 bg-[#2f3856]'>
                           <Skeleton
-                            variant='text'
-                            width={150}
-                            className='h-7'
+                            variant='rectangular'
+                            height={240}
+                            className='xl:w-[300px] lg:w-[250px]'
                           />
-                          <Skeleton variant='text' height={100} width={180} />
+                          <div className=' space-y-0 flex flex-col items-center'>
+                            <Skeleton
+                              variant='text'
+                              width={150}
+                              className='h-7'
+                            />
+                            <Skeleton variant='text' height={100} width={180} />
+                          </div>
                         </div>
-                      </div>
-                    </Stack>
-                  ))}
+                      </Stack>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            )
           ) : (
             movieList.map((movie) => (
               <div
@@ -126,9 +135,7 @@ export default function Search() {
               <span className='text-red-700'>
                 There is no movie with this name :{' '}
               </span>
-              <span>
-              ({searchValue})
-              </span>
+              <span>({searchValue})</span>
             </div>
           )}
         </div>

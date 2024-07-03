@@ -1,7 +1,7 @@
 import './App.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './Pages/Home/Home';
-import Details from './Pages/Movies/Details';
+import Details, { loader as detailsLoader } from './Pages/Movies/Details';
 import AppLayout from './AppLayout';
 import NotFound from './Pages/NotFound/NotFound';
 import { Provider } from 'react-redux';
@@ -17,8 +17,13 @@ const routes = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: '/movies', element: <Movies /> },
       { path: '/search', element: <Search /> },
-      { path: '/details/:id', element: <Details /> },
-      // { path: '/details/:id', element: <Details />, loader: prdDetailsLoader, errorElement:<NotFound /> },
+      // { path: '/details/:id', element: <Details /> },
+      {
+        path: '/details/:id',
+        element: <Details />,
+        loader: detailsLoader,
+        errorElement: <NotFound />,
+      },
     ],
   },
   { path: '*', element: <NotFound /> },

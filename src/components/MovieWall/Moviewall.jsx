@@ -4,10 +4,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export default function Moviewall() {
+  const navigate = useNavigate();
   const [movieOnMovieWall, setMovieOnMovieWall] = useState([]);
+  const modeState = useSelector((state) => state.mode.mode);
 
-  useEffect(() => {
-    instance
+  // get movie
+  const getmovie = async () => {
+    await instance
       .get('movie/popular', { params: { page: 5 } })
       .then((res) => {
         setMovieOnMovieWall(res.data.results.slice(0, 10));
@@ -15,9 +18,12 @@ export default function Moviewall() {
       .catch((err) => {
         console.log(err);
       });
+  };
+  useEffect(() => {
+    getmovie();
   }, []);
 
-  const navigate = useNavigate();
+  // to details of movie
   const toDetails = (id) => {
     navigate(`/details/${id}`);
     window.scroll({
@@ -25,8 +31,6 @@ export default function Moviewall() {
       behavior: 'smooth',
     });
   };
-
-  const modeState = useSelector((state) => state.mode.mode);
 
   return (
     <div className='flex justify-center flex-col py-6'>
@@ -132,7 +136,9 @@ export default function Moviewall() {
           >
             <p
               className={`flex justify-center px-10 py-3 rounded-lg ${
-                modeState == 'light' ? 'bg-[#3700b3] hover:text-white' : 'bg-[#00df9a] hover:text-black'
+                modeState == 'light'
+                  ? 'bg-[#3700b3] hover:text-white'
+                  : 'bg-[#00df9a] hover:text-black'
               } `}
             >
               More

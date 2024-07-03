@@ -6,7 +6,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-
 import { useEffect, useState } from 'react';
 import instance from '../../../axiosConfig/instance';
 
@@ -14,8 +13,9 @@ export function CarouselDemo() {
   const [moviesList, setMoviesList] = useState([]);
   const [randomPage, setRandomPage] = useState(Math.ceil(Math.random() * 40));
 
-  useEffect(() => {
-    instance
+  // get movie
+  const getmovie = async () => {
+    await instance
       .get('movie/popular', { params: { page: randomPage } })
       .then((res) => {
         setMoviesList(res.data.results);
@@ -23,8 +23,11 @@ export function CarouselDemo() {
       .catch((err) => {
         console.log(err);
       });
+  };
+  useEffect(() => {
+    getmovie();
   }, [randomPage]);
-
+  
   return (
     <div className='flex justify-center items-center  '>
       <Carousel className='w-12/12 mx-2  overflow-hidden '>

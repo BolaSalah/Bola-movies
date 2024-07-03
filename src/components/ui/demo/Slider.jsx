@@ -12,22 +12,26 @@ import instance from '../../../axiosConfig/instance';
 import { useNavigate } from 'react-router-dom';
 
 export function Slider() {
-
+  const navigate = useNavigate();
   const [moviesList, setMoviesList] = useState([]);
   const modeState = useSelector((state) => state.mode.mode);
 
-  useEffect(() => {
-    instance
+  // get movie
+  const getmovie = async () => {
+    await instance
       .get('movie/popular', { params: { page: 3 } })
       .then((res) => {
-        setMoviesList(res.data.results.slice(7,19));
+        setMoviesList(res.data.results.slice(7, 19));
       })
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  };
+  useEffect(() => {
+    getmovie();
+  }, []);
 
-  const navigate = useNavigate();
+  // to details of movie
   const toDetails = (id) => {
     navigate(`/details/${id}`);
     window.scroll({
@@ -75,9 +79,7 @@ export function Slider() {
                                  bg-black text-white transition duration-1000 
                                    opacity-0 hover:opacity-70 hover:cursor-pointer'
                       >
-                        <p className=' text-xl border-b mr-4 '>
-                          more
-                        </p>
+                        <p className=' text-xl border-b mr-4 '>more</p>
                       </div>
                     </CardContent>
                   </Card>
