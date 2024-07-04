@@ -30,7 +30,9 @@ export default function ResponsiveAppBar() {
       ${modeState == 'light' ? 'bg-[#3700b3]' : 'bg-black text-white'}
       `}
       >
-        {/* Logo */}
+        {/* Logo */ }
+        <span>
+
         <Link
           to={''}
           onClick={() => {
@@ -39,9 +41,10 @@ export default function ResponsiveAppBar() {
           className={`w-full text-3xl font-bold 
           ${modeState == 'light' ? 'text-white' : 'text-[#00df9a]'}
           `}
-        >
+          >
           Movies
         </Link>
+          </span>
         {/* Desktop Navigation */}
         <ul className='hidden md:flex'>
           {navItems.map((item) => (
@@ -101,7 +104,7 @@ export default function ResponsiveAppBar() {
           }
         >
           {/* Mobile Logo */}
-          <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>
+          <h1 className='w-full text-2xl font-bold text-[#00df9a] m-4'>
             Movies
           </h1>
           {/* Mobile Navigation Items */}

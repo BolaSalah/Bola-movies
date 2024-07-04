@@ -38,7 +38,7 @@ export function CarouselDemo() {
                 <Card className='border-0'>
                   <CardContent className='flex justify-center items-center'>
                     <img
-                      className='md:h-[90vh] h-[40vh]  mx-auto w-full '
+                      className='md:h-[90vh] h-[35vh]  mx-auto w-full '
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       // src={`https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg`}
                       alt='home'

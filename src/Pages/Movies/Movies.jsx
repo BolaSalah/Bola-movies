@@ -60,7 +60,7 @@ export default function Movies() {
                     className='bg-[#2f3856] rounded-lg'
                     onClick={() => {
                       navigate(`/details/${movie.id}`),
-                        window.scroll({top:0,behavior:"smooth"})
+                        window.scroll({top:0})
                     }}
                   >
                     <CardActionArea>
