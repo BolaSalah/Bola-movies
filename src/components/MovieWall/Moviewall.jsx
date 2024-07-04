@@ -44,7 +44,7 @@ export default function Moviewall() {
             ></div>
             <div className='mb-5 ms-3  text-[25px] font-bold'>WHAT'S ON</div>
           </div>
-          <div className='grid px-5 py-4 w-10/12 mx-auto'>
+          <div className='grid md:px-5 py-4 md:w-11/12 mx-auto'>
             {movieOnMovieWall.map((movie, _index) => (
               <>
                 {_index == 0 && (

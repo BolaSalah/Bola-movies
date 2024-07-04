@@ -160,7 +160,7 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
       size={size}
       className={cn(
         ' border-0 absolute h-[20%] w-1/12 ',
-        '-left-2 top-1/2 -translate-y-1/2  transition ease-in-out duration-500',
+        '-left-1 top-1/2 -translate-y-1/2  transition ease-in-out duration-500',
         !canScrollPrev
           ? ' hidden'
           : ' opacity-60 hover:opacity-100'
