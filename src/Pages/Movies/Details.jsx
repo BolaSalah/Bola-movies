@@ -106,7 +106,7 @@ useEffect(() => {
             <div className='md:mt-40'>
               <YouTube
                 videoId={`${video}`}
-                iframeClassName=' w-8/12 mx-auto lg:h-[550px]'
+                iframeClassName=' w-10/12 md:w-8/12 mx-auto lg:h-[550px]'
               />
             </div>
           </div>
