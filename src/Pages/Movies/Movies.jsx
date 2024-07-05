@@ -59,7 +59,9 @@ export default function Movies() {
                   <button
                     // className='bg-[#2f3856] rounded-lg'
                     className={` px-2 py-2 rounded-lg ${
-                      modeState == 'light' ? 'bg-[#5f33c2] hover:bg-[#3700b3]' : 'bg-[#00df9a] text-black'
+                      modeState == 'light'
+                        ? 'bg-[#5f33c2] hover:bg-[#3700b3]'
+                        : 'bg-[#00df9a] hover:bg-[#1b9f75] text-black'
                     } `}
                     onClick={() => {
                       navigate(`/details/${movie.id}`),
@@ -114,7 +116,11 @@ export default function Movies() {
                   className={`flex justify-center px-10 py-3 rounded-lg  ${
                     modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
                   } 
-                    ${counter == 1 ? ' cursor-not-allowed text-black' : 'text-white'}`}
+                    ${
+                      counter == 1
+                        ? ' cursor-not-allowed text-black'
+                        : 'text-white'
+                    }`}
                   value={'previous'}
                   onClick={(e) => {
                     toAnotherPage(e);
