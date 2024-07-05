@@ -61,7 +61,7 @@ export default function Movies() {
                     className={` px-2 py-2 rounded-lg ${
                       modeState == 'light'
                         ? 'bg-[#5f33c2] hover:bg-[#3700b3]'
-                        : 'bg-[#00df9a] hover:bg-[#1b9f75] text-black'
+                        : 'bg-[#1b9f75] hover:bg-[#00df9a] text-black'
                     } `}
                     onClick={() => {
                       navigate(`/details/${movie.id}`),
