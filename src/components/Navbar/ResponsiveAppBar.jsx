@@ -30,21 +30,23 @@ export default function ResponsiveAppBar() {
       ${modeState == 'light' ? 'bg-[#3700b3]' : 'bg-black text-white'}
       `}
       >
-        {/* Logo */ }
+        {/* Logo */}
         <span>
-
-        <Link
-          to={''}
-          onClick={() => {
-            window.scroll({ top: 0 });
-          }}
-          className={`w-full text-3xl font-bold 
+          <Link
+            to={''}
+            onClick={() => {
+              window.scroll({ top: 0 });
+            }}
+            className={`w-full text-lg sm:text-2xl sm:font-bold font-medium 
           ${modeState == 'light' ? 'text-white' : 'text-[#00df9a]'}
           `}
           >
-          Movies
-        </Link>
-          </span>
+            <u>
+              <i>BsW</i>
+            </u>{' '}
+            Movies
+          </Link>
+        </span>
         {/* Desktop Navigation */}
         <ul className='hidden md:flex'>
           {navItems.map((item) => (
@@ -75,9 +77,6 @@ export default function ResponsiveAppBar() {
           ))}
           <li
             className='py-3 '
-            // onClick={() => {
-            //   changeModeBtn();
-            // }}
           >
             <SwitchDemo></SwitchDemo>
           </li>
@@ -104,7 +103,10 @@ export default function ResponsiveAppBar() {
           }
         >
           {/* Mobile Logo */}
-          <h1 className='w-full text-2xl font-bold text-[#00df9a] m-4'>
+          <h1 className='w-full text-lg sm:text-2xl sm:font-bold font-medium text-[#00df9a] m-2 sm:m-4'>
+            <u>
+              <i>BsW</i>
+            </u>{' '}
             Movies
           </h1>
           {/* Mobile Navigation Items */}

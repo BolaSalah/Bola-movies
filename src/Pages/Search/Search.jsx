@@ -17,6 +17,7 @@ export default function Search() {
   const [searchValue, setSearchValue] = useState('');
   const [movieList, setMovieList] = useState([]);
   const loader = useSelector((state) => state.loader.loader);
+  const modeState = useSelector((state) => state.mode.mode);
   const navigate = useNavigate();
 
   // set search value
@@ -49,7 +50,13 @@ export default function Search() {
               value={searchValue}
               maxLength={40}
               placeholder='Find Movies'
-              className=' w-full px-3 my-10 text-blue-900 py-2 border-2 border-blue-800 outline-[#00df9a]  '
+              className={` w-full px-3 my-10 text-black py-3 border-2
+                 ${
+                   modeState == 'light'
+                     ? 'border-[#7458b6] outline-[#3700b3]'
+                     : 'border-[#2fa17d] outline-[#00df9a]'
+                 } 
+                  `}
               onChange={(e) => {
                 movieName(e);
               }}
@@ -59,34 +66,34 @@ export default function Search() {
             </div>
           </div>
         </div>
-        <div className='flex flex-row flex-wrap'>
+        <div className='flex flex-row flex-wrap justify-center'>
           {loader ? (
             searchValue.length == 0 ? (
               <div></div>
             ) : (
-              <div className='flex justify-center'>
-                <div className='max-w-[1800px] flex justify-center mt-6'>
-                  <div className='flex flex-row flex-wrap justify-center w-full'>
-                    {Array.apply(null, { length: 8 }).map((e, i) => (
-                      <Stack className='sm:w-2/4 md:w-1/4 px-3 mb-10' key={i}>
-                        <div className='w-11/12 bg-[#2f3856]'>
-                          <Skeleton
-                            variant='rectangular'
-                            height={240}
-                            className='xl:w-[300px] lg:w-[250px]'
-                          />
-                          <div className=' space-y-0 flex flex-col items-center'>
-                            <Skeleton
-                              variant='text'
-                              width={150}
-                              className='h-7'
-                            />
-                            <Skeleton variant='text' height={100} width={180} />
-                          </div>
+              <div className='w-full'>
+                <div className='flex flex-wrap justify-center items-center'>
+                  {Array.apply(null, { length: 4 }).map((e, i) => (
+                    <Stack
+                      className='sm:w-2/4 md:w-1/4 w-full md:px-4 px-12 mb-10'
+                      key={i}
+                    >
+                      <div
+                        className={`h-[360px] rounded-lg overflow-hidden ${
+                          modeState == 'light' ? 'bg-[#5f33c2]' : 'bg-[#108c65]'
+                        } `}
+                      >
+                        <Skeleton
+                          variant='rectangular'
+                          height={'70%'}
+                        />
+                        <div className=' space-y-0 flex flex-col items-center'>
+                          <Skeleton variant='text' className='w-[40%]' />
+                          <Skeleton variant='text' height={100} width={160} />
                         </div>
-                      </Stack>
-                    ))}
-                  </div>
+                      </div>
+                    </Stack>
+                  ))}
                 </div>
               </div>
             )
@@ -97,7 +104,11 @@ export default function Search() {
                 key={movie.id}
               >
                 <button
-                  className='bg-[#2f3856] rounded-lg'
+                  className={` px-2 py-2 rounded-lg ${
+                    modeState == 'light'
+                      ? 'bg-[#5f33c2] hover:bg-[#3700b3]'
+                      : 'bg-[#00df9a]'
+                  } `}
                   onClick={() => {
                     navigate(`/details/${movie.id}`);
                   }}

@@ -57,20 +57,23 @@ export default function Movies() {
                   key={movie.id}
                 >
                   <button
-                    className='bg-[#2f3856] rounded-lg'
+                    // className='bg-[#2f3856] rounded-lg'
+                    className={` px-2 py-2 rounded-lg ${
+                      modeState == 'light' ? 'bg-[#5f33c2] hover:bg-[#3700b3]' : 'bg-[#00df9a] text-black'
+                    } `}
                     onClick={() => {
                       navigate(`/details/${movie.id}`),
-                        window.scroll({top:0})
+                        window.scroll({ top: 0 });
                     }}
                   >
                     <CardActionArea>
-                      <Typography
+                      <div
                         gutterBottom
                         component='div'
-                        className='h-5 overflow-hidden text-white '
+                        className='h-6 overflow-hidden font-bold '
                       >
                         {movie.title}
-                      </Typography>
+                      </div>
                       <CardMedia
                         component='img'
                         height='140'
@@ -108,10 +111,10 @@ export default function Movies() {
               ))}
               <div className='mx-auto flex flex-row justify-center items-center mb-10 '>
                 <button
-                  className={`flex justify-center px-10 py-3 rounded-lg ${
+                  className={`flex justify-center px-10 py-3 rounded-lg  ${
                     modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
                   } 
-                    ${counter == 1 ? ' cursor-not-allowed text-red-700' : ''}`}
+                    ${counter == 1 ? ' cursor-not-allowed text-black' : 'text-white'}`}
                   value={'previous'}
                   onClick={(e) => {
                     toAnotherPage(e);
@@ -122,7 +125,7 @@ export default function Movies() {
                   prev
                 </button>
                 <div
-                  className={`flex justify-center px-4 py-3 mx-5 rounded-lg ${
+                  className={`flex justify-center px-4 py-3 mx-5 rounded-lg text-white ${
                     modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
                   } `}
                 >

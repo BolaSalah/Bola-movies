@@ -78,7 +78,7 @@ export default function Moviewall() {
                 {_index > 0 && _index < 9 && (
                   <div key={_index} className=' bg-red-500 relative '>
                     <img
-                      className='w-full'
+                      className='w-full h-full'
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt=''
                     />
