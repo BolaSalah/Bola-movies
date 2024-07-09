@@ -74,9 +74,6 @@ module.exports = {
       boxShadow: {
         "shadowCard": '2px 35px 32px -8px rgba(0, 0, 0, 0.75)',
       },
-      rotate: {
-        "10": '10deg',
-      },
     },
   },
   plugins: [require('tailwindcss-animate')],

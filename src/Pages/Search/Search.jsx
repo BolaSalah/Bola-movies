@@ -35,7 +35,7 @@ export default function Search() {
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
   useEffect(() => {
     getMovieSearch();
   }, [searchValue]);
@@ -43,6 +43,7 @@ export default function Search() {
   return (
     <div>
       <div className='ps-4 mb-11'>
+        {/* input */}
         <div className='flex justify-center mb-9 '>
           <div className='relative w-[60%] mb-1'>
             <input
@@ -53,7 +54,7 @@ export default function Search() {
               className={` w-full px-3 my-10 text-black py-3 border-2
                  ${
                    modeState == 'light'
-                     ? 'border-[#7458b6] outline-[#3700b3]'
+                     ? 'border-[#9a90af] outline-[#9a90af]'
                      : 'border-[#2fa17d] outline-[#00df9a]'
                  } 
                   `}
@@ -67,6 +68,7 @@ export default function Search() {
           </div>
         </div>
         <div className='flex flex-row flex-wrap justify-center'>
+          {/* loader */}
           {loader ? (
             searchValue.length == 0 ? (
               <div></div>
@@ -80,13 +82,10 @@ export default function Search() {
                     >
                       <div
                         className={`h-[360px] rounded-lg overflow-hidden ${
-                          modeState == 'light' ? 'bg-[#5f33c2]' : 'bg-[#108c65]'
+                          modeState == 'light' ? 'bg-[#9a90af]' : 'bg-[#108c65]'
                         } `}
                       >
-                        <Skeleton
-                          variant='rectangular'
-                          height={'70%'}
-                        />
+                        <Skeleton variant='rectangular' height={'70%'} />
                         <div className=' space-y-0 flex flex-col items-center'>
                           <Skeleton variant='text' className='w-[40%]' />
                           <Skeleton variant='text' height={100} width={160} />
@@ -98,52 +97,59 @@ export default function Search() {
               </div>
             )
           ) : (
-            movieList.map((movie) => (
-              <div
-                className='sm:w-2/4 md:w-1/4 mb-10 sm:px-3 px-10  text-white'
-                key={movie.id}
-              >
-                <button
-                  className={` px-2 py-2 rounded-lg ${
-                    modeState == 'light'
-                      ? 'bg-[#5f33c2] hover:bg-[#3700b3]'
-                      : 'bg-[#00df9a]'
-                  } `}
-                  onClick={() => {
-                    navigate(`/details/${movie.id}`);
-                  }}
-                >
-                  <CardActionArea>
-                    <div
-                      gutterBottom
-                      component='div'
-                      className='h-5 overflow-hidden text-white mt-1 '
+            // card
+            movieList.map(
+              (movie) =>
+                movie.poster_path &&
+                movie.overview && (
+                  <div
+                    className='sm:w-2/4 md:w-1/4 mb-10 sm:px-3 px-10  text-white cardEffectPerspective'
+                    key={movie.id}
+                  >
+                    <button
+                      className={` px-2 py-2 rounded-lg cardEffect ${
+                        modeState == 'light'
+                          ? 'bg-[#9a90af] text-black'
+                          : 'bg-[#15533f]'
+                      } `}
+                      onClick={() => {
+                        navigate(`/details/${movie.id}`);
+                        window.scroll({ top: 0, behavior: 'smooth' });
+                      }}
                     >
-                      {movie.title}
-                    </div>
-                    <CardMedia
-                      component='img'
-                      height='140'
-                      image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                      className='h-60 mt-3 '
-                      alt='green iguana'
-                    />
-                    <CardContent>
-                      <Typography
-                        variant='body2'
-                        className='h-16 overflow-hidden'
-                      >
-                        {movie.overview}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </button>
-              </div>
-            ))
+                      <CardActionArea>
+                        <div
+                          gutterBottom
+                          component='div'
+                          className='h-5 overflow-hidden font-bold '
+                        >
+                          {movie.title}
+                        </div>
+                        <CardMedia
+                          component='img'
+                          height='140'
+                          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                          className='h-60 mt-3 w-full rounded-md'
+                          alt='green iguana'
+                        />
+                        <CardContent>
+                          <Typography
+                            variant='body2'
+                            className='h-16 overflow-hidden'
+                          >
+                            {movie.overview}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </button>
+                  </div>
+                )
+            )
           )}
+          {/* result is no movie  */}
           {searchValue.length > 1 && movieList.length == 0 && (
             <div className=' w-full md:text-[32px] sm:text-lg text-[10px] flex-wrap mt-3 my-12 flex flex-col justify-center items-center'>
-              <span className='text-red-700'>
+              <span className='text-red-700 mb-3'>
                 There is no movie with this name :{' '}
               </span>
               <span>({searchValue})</span>

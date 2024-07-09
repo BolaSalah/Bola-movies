@@ -50,106 +50,118 @@ export default function Movies() {
       ) : (
         <div className='flex justify-center'>
           <div className='flex justify-center flex-col '>
-            <div className='flex flex-row flex-wrap mt-16 '>
-              {moviesList.map((movie) => (
-                <div
-                  className='sm:w-2/4 md:w-1/4 mb-10 px-12 sm:px-3 text-white rounded-lg'
-                  key={movie.id}
-                >
-                  <button
-                    // className='bg-[#2f3856] rounded-lg'
-                    className={` px-2 py-2 rounded-lg ${
-                      modeState == 'light'
-                        ? 'bg-[#5f33c2] hover:bg-[#3700b3]'
-                        : 'bg-[#1b9f75] hover:bg-[#00df9a] text-black'
-                    } `}
-                    onClick={() => {
-                      navigate(`/details/${movie.id}`),
-                        window.scroll({ top: 0 });
-                    }}
-                  >
-                    <CardActionArea>
-                      <div
-                        gutterBottom
-                        component='div'
-                        className='h-6 overflow-hidden font-bold '
+            {/* card */}
+            <div className='flex flex-row flex-wrap mt-10 '>
+              {moviesList.map(
+                (movie) =>
+                  movie.poster_path &&
+                  movie.overview && (
+                    <div
+                      className='sm:w-2/4 md:w-1/4  sm:px-3 text-white rounded-lg cardEffectPerspective'
+                      key={movie.id}
+                    >
+                      <button
+                        // className='bg-[#2f3856] rounded-lg'
+                        className={` px-2 py- rounded-lg cardEffect ${
+                          modeState == 'light'
+                            ? 'bg-[#9a90af] text-black hover:'
+                            : 'bg-[#15533f]'
+                        } `}
+                        onClick={() => {
+                          navigate(`/details/${movie.id}`),
+                            window.scroll({ top: 0 });
+                        }}
                       >
-                        {movie.title}
-                      </div>
-                      <CardMedia
-                        component='img'
-                        height='140'
-                        image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                        className='h-60 mt-3 '
-                        alt='green iguana'
-                      />
-                      <CardContent>
-                        <Typography
-                          variant='body2'
-                          className='h-16 overflow-hidden'
-                        >
-                          {movie.overview}
-                        </Typography>
-                      </CardContent>
-                      <div className='flex justify-between p-3'>
-                        <div className='flex justify-center items-center gap-2'>
-                          <div>
-                            <IoStarSharp className='text-[#ffff00]' />
+                        <CardActionArea>
+                          <div
+                            gutterBottom
+                            component='div'
+                            className='h-6 overflow-hidden font-bold '
+                          >
+                            {movie.title}
                           </div>
-                          <div>{String(movie.vote_average).slice(0, 3)}</div>
-                        </div>
-                        <div className='flex justify-center items-center gap-2'>
-                          <div>
-                            <IoIosEye />
+                          <CardMedia
+                            component='img'
+                            height='140'
+                            image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                            className='h-60 mt-3 rounded-md '
+                            alt='green iguana'
+                          />
+                          <CardContent>
+                            <Typography
+                              variant='body2'
+                              className='h-16 overflow-hidden'
+                            >
+                              {movie.overview}
+                            </Typography>
+                          </CardContent>
+                          <div className='flex justify-between p-3'>
+                            <div className='flex justify-center items-center gap-2'>
+                              <div>
+                                <IoStarSharp className='text-[#ffff00]' />
+                              </div>
+                              <div>
+                                {String(movie.vote_average).slice(0, 3)}
+                              </div>
+                            </div>
+                            <div className='flex justify-center items-center gap-2'>
+                              <div>
+                                <IoIosEye />
+                              </div>
+                              <div>
+                                <p>{movie.vote_count}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <p>{movie.vote_count}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardActionArea>
-                  </button>
-                </div>
-              ))}
-              <div className='mx-auto flex flex-row justify-center items-center mb-10 '>
-                <button
-                  className={`flex justify-center px-10 py-3 rounded-lg  ${
-                    modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
-                  } 
+                        </CardActionArea>
+                      </button>
+                    </div>
+                  )
+              )}
+            </div>
+            {/* pagination */}
+            <div className='mx-auto flex flex-row justify-center items-center mb-10 mt-2 '>
+              <button
+                className={`flex justify-center px-10 py-3 rounded-lg  ${
+                  modeState == 'light'
+                    ? 'bg-[#9a90af] text-black'
+                    : 'bg-[#15533f] text-white'
+                } 
                     ${
-                      counter == 1
-                        ? ' cursor-not-allowed text-black'
-                        : 'text-white'
+                      counter == 1 ? ' cursor-not-allowed text-[#626565bb]' : ''
                     }`}
-                  value={'previous'}
-                  onClick={(e) => {
-                    toAnotherPage(e);
-                    window.scroll({ top: 0 });
-                  }}
-                  disabled={counter == 1}
-                >
-                  prev
-                </button>
-                <div
-                  className={`flex justify-center px-4 py-3 mx-5 rounded-lg text-white ${
-                    modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
-                  } `}
-                >
-                  {counter}
-                </div>
-                <button
-                  className={`flex justify-center px-10 py-3 rounded-lg text-white ${
-                    modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
-                  } `}
-                  value={'next'}
-                  onClick={(e) => {
-                    toAnotherPage(e);
-                    window.scroll({ top: 0, behavior: 'smooth' });
-                  }}
-                >
-                  next
-                </button>
+                value={'previous'}
+                onClick={(e) => {
+                  toAnotherPage(e);
+                  window.scroll({ top: 0 });
+                }}
+                disabled={counter == 1}
+              >
+                prev
+              </button>
+              <div
+                className={`flex justify-center px-4 py-3 mx-5 rounded-lg  ${
+                  modeState == 'light'
+                    ? 'bg-[#9a90af] text-black'
+                    : 'bg-[#15533f] text-white'
+                } `}
+              >
+                {counter}
               </div>
+              <button
+                className={`flex justify-center px-10 py-3 rounded-lg  ${
+                  modeState == 'light'
+                    ? 'bg-[#9a90af] text-black'
+                    : 'bg-[#15533f] text-white'
+                } `}
+                value={'next'}
+                onClick={(e) => {
+                  toAnotherPage(e);
+                  window.scroll({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                next
+              </button>
             </div>
           </div>
         </div>

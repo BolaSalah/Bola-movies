@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../App.css';
 
 export default function Footer() {
   const mode = useSelector((state) => state.mode.mode);

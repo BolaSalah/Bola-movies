@@ -41,21 +41,20 @@ export function Slider() {
   };
 
   return (
-    <div className='flex justify-center flex-col py-10'>
+    <div className='flex justify-center flex-col my-12'>
       <div className='flex justify-center'>
         <Carousel
           opts={{
             align: 'start',
           }}
-          className='w-9/12'
         >
-          <div className='flex ms-2 pb-4'>
+          <div className='flex  pb-4'>
             <div
               className={`w-3 rounded-md h-10 ${
-                modeState == 'light' ? 'bg-[#3700b3]' : 'bg-[#00df9a]'
+                modeState == 'light' ? 'bg-[#9a90af]' : 'bg-[#00df9a]'
               }`}
             ></div>
-            <div className='mb-5 ms-3  text-[25px] font-bold'>
+            <div className='mb-3 ms-3  text-[25px] font-bold'>
               Fan favorites
             </div>
           </div>

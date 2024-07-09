@@ -5,7 +5,7 @@ import Moviewall from '@/components/MovieWall/Moviewall';
 export default function Home() {
   return (
     <>
-      <div>
+      <div className='px-4'>
         <CarouselDemo></CarouselDemo>
         <Slider></Slider>
         <Moviewall />

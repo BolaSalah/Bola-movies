@@ -122,7 +122,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
         ref={ref}
         className={cn(
           "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          orientation === "horizontal" ? "-ml-6" : "-mt-4 flex-col",
           className
         )}
         {...props} />
@@ -140,7 +140,7 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
       role='group'
       aria-roledescription='slide'
       className={cn(
-        ` shrink-0 grow-0 md:w-[70%]  first:w-[100%]  md:first:w-[99%] md:first:ms-2 md:first:me-1 last:w-[100%] relative -top-4  sm:w-[40] w-[80%] `,
+        ` shrink-0 grow-0 relative -top-4 w-[60%] `,
         orientation === 'horizontal' ? 'pl-4' : 'pt-4',
         className
       )}
@@ -160,16 +160,13 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
       size={size}
       className={cn(
         ' border-0 absolute h-[20%] w-1/12 ',
-        '-left-1 top-1/2 -translate-y-1/2  transition ease-in-out duration-500',
-        !canScrollPrev
-          ? ' hidden'
-          : ' opacity-60 hover:opacity-100'
+        '-left-1 top-1/2 -translate-y-1/2  transition ease-in-out duration-500 opacity-60 hover:opacity-100',
+        !canScrollPrev ? ' hidden' : ' '
       )}
-      // disabled={ !canScrollPrev }
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className='h-20 w-20' />
+      <ArrowLeft className='h-16 w-16' />
       <span className='sr-only'>Previous slide</span>
     </Button>
   );
@@ -184,22 +181,15 @@ const CarouselNext = React.forwardRef(({ className, variant = "outline", size = 
       ref={ref}
       variant={variant}
       size={size}
-      // className={cn("absolute h-full w-1/12 opacity-5", orientation === "horizontal"
-      //   ? "-right-0 top-1/2 -translate-y-1/2 opacity-5"
-      //   : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90", className)}
-      // disabled={ !canScrollNext }
       className={cn(
         'border-0 absolute w-1/12 ',
-        '-right-1 top-1/2 -translate-y-1/2 transition ease-in-out duration-500',
-        !canScrollNext
-          ? ' hidden'
-          : ' opacity-60 hover:opacity-100'
+        '-right-1 top-1/2 -translate-y-1/2 transition ease-in-out duration-500 opacity-60 hover:opacity-100',
+        !canScrollNext ? ' hidden' : ' '
       )}
-      // disabled={ !canScrollNext }
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className='h-20 w-20' />
+      <ArrowRight className='h-16 w-16' />
       <span className='sr-only'>Next slide</span>
     </Button>
   );

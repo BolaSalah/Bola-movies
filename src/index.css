@@ -74,3 +74,13 @@
       @apply bg-background text-foreground;
     }
   }
+
+  .cardEffectPerspective{
+    perspective: 2000px;
+  }.cardEffect{
+    transform: rotateX(30deg) scale(0.9);
+    transition: 1s;
+  }
+  .cardEffect:hover{
+    transform: rotateX(0deg) scale(1);
+  }

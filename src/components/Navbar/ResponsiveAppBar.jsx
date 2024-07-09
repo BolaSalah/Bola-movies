@@ -26,11 +26,11 @@ export default function ResponsiveAppBar() {
     <>
       <div
         className={`
-       sticky top-0 z-10 flex justify-between items-center py-0.5  mx-auto px-6  opacity-80 hover:opacity-90
+       sticky top-0 z-10 flex justify-between items-center py-0.5  mx-auto px-4  opacity-80 hover:opacity-90
       ${modeState == 'light' ? 'bg-[#9a90af]' : 'bg-black text-white'}
       `}
       >
-        {/* Logo */}
+        {/* Desktop Navigation Icon */}
         <span>
           <Link
             to={''}
@@ -47,7 +47,7 @@ export default function ResponsiveAppBar() {
             Movies
           </Link>
         </span>
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation Menu */}
         <ul className='hidden md:flex'>
           {navItems.map((item) => (
             <NavLink
@@ -101,13 +101,14 @@ export default function ResponsiveAppBar() {
           }
         >
           {/* Mobile Logo */}
-          <h1 className={ `w-full text-lg sm:text-2xl sm:font-bold font-medium  m-2 sm:m-4 *
-            ${(modeState == "light")?"text-white":"text-[#00df9a]"}            
-            `}>
-            <span className='underline'>
-                BsW
-            </span>{' '}
-            Movies
+          <h1
+            className={`w-full text-lg sm:text-2xl sm:font-bold font-medium  m-2 sm:m-4 *
+            ${
+              modeState == 'light' ? 'text-white' : 'text-[#00df9a]'
+            }            
+            `}
+          >
+            <span className='underline'>BsW</span> Movies
           </h1>
           {/* Mobile Navigation Items */}
           <div className='flex flex-col mx-2  '>

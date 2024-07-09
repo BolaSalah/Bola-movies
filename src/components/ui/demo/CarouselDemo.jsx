@@ -6,17 +6,21 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+// import {  CarouselApi } from '@/components/ui/carousel';
+
 import { useEffect, useState } from 'react';
 import instance from '../../../axiosConfig/instance';
+import { Button } from '@/components/ui/button';
 
 export function CarouselDemo() {
   const [moviesList, setMoviesList] = useState([]);
   const [randomPage, setRandomPage] = useState(Math.ceil(Math.random() * 40));
-
+const [api, setApi] = useState()
+  const [current, setCurrent] = useState(0)
   // get movie
   const getmovie = async () => {
     await instance
-      .get('movie/popular', { params: { page: randomPage } })
+      .get('movie/popular', { params: { page: 4 } })
       .then((res) => {
         setMoviesList(res.data.results);
       })
@@ -26,11 +30,18 @@ export function CarouselDemo() {
   };
   useEffect(() => {
     getmovie();
-  }, [randomPage]);
+    if (!api) {
+      return;
+    }
+
+    api.on('select', () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
   
   return (
-    <div className='flex justify-center items-center  '>
-      <Carousel className='w-12/12 mx-2  overflow-hidden '>
+    <div className='flex justify-center items-center mt-2  '>
+      <Carousel className='overflow-hidden' setApi={setApi} opts={{loop:true}}>
         <CarouselContent>
           {moviesList.map((movie, index) => (
             <CarouselItem key={index}>
@@ -49,8 +60,8 @@ export function CarouselDemo() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious onClick={()=>{api.scrollTo(current-1)}} />
+        <CarouselNext onClick={()=>{api.scrollTo(current+1)}} />
       </Carousel>
     </div>
   );

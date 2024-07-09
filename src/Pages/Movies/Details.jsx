@@ -85,8 +85,8 @@ useEffect(() => {
               <button
                 className={`${
                   mode == 'light'
-                    ? 'bg-black text-white hover:text-[#3700b3]'
-                    : 'bg-white text-black hover:text-[#00df9a]'
+                    ? 'bg-black text-white hover:text-[#9a90af]'
+                    : 'bg-white text-black hover:text-[#15533f]'
                 }  hover:cursor-pointer my-4 px-5 py-4 font-semibold  rounded-[25px] flex gap-2 justify-center items-center`}
                 onClick={() => {
                   scrollToVideo();
@@ -102,47 +102,49 @@ useEffect(() => {
 
         {/* video Section */}
         <div className='Video-section'>
-            <div className='md:mt-28' ref={myRef}></div>
-            <div className='md:mt-40'>
-              <YouTube
-                videoId={`${video}`}
-                iframeClassName=' w-10/12 md:w-8/12 mx-auto lg:h-[550px]'
-              />
-            </div>
+          <div className='md:mt-28' ref={myRef}></div>
+          <div className='md:mt-40'>
+            <YouTube
+              videoId={`${video}`}
+              iframeClassName=' w-10/12 md:w-8/12 mx-auto lg:h-[550px]'
+            />
           </div>
+        </div>
 
         {/* cast of movie Section */}
         <div className='Cast-section mt-8'>
-            <div className=' text-sm md:text-lg font-bold ms-6 mb-8'>
-              {' '}
-              Cast of ( {movie.title} )
-            </div>
-            <div className='actors flex flex-wrap '>
-            { cast.map((actor, _index) => (
-                (actor.profile_path)&&
-                <div
-                  className='actor w-6/12 sm:w-4/12 md:w-3/12 lg:w-2/12 mb-10'
-                  key={_index}
-                >
-                  <div className='flex justify-center'>
-                    <img
-                      className={`rounded-[50%] sm:h-40 h-32 w-32 sm:w-40 ${
-                        mode == 'light'
-                          ? ' border-4 hover:border-[#3700b3]'
-                          : ' border-4 hover:border-[#00df9a]'
-                      }`}
-                      src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                      alt={actor.name}
-                    />
-                  </div>
-                  <div className='flex flex-col items-center mt-2 text-lg font-semibold'>
-                    <p>{actor.name}</p>
-                    <p className='font-normal'>{actor.character}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className=' text-sm md:text-lg font-bold ms-6 mb-8'>
+            {' '}
+            Cast of ( {movie.title} )
           </div>
+          <div className='actors flex flex-wrap '>
+            {cast.map(
+              (actor, _index) =>
+                actor.profile_path && (
+                  <div
+                    className='actor w-6/12 sm:w-4/12 md:w-3/12 lg:w-2/12 mb-10'
+                    key={_index}
+                  >
+                    <div className='flex justify-center'>
+                      <img
+                        className={`rounded-[50%] sm:h-40 h-32 w-32 sm:w-40 ${
+                          mode == 'light'
+                            ? ' border-4 hover:border-[#9a90af]'
+                            : ' border-4 hover:border-[#15533f]'
+                        }`}
+                        src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                        alt={actor.name}
+                      />
+                    </div>
+                    <div className='flex flex-col items-center mt-2 text-lg font-semibold'>
+                      <p>{actor.name}</p>
+                      <p className='font-normal'>{actor.character}</p>
+                    </div>
+                  </div>
+                )
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
