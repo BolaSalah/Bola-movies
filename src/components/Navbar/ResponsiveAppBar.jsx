@@ -27,7 +27,7 @@ export default function ResponsiveAppBar() {
       <div
         className={`
        sticky top-0 z-10 flex justify-between items-center py-0.5  mx-auto px-6  opacity-80 hover:opacity-90
-      ${modeState == 'light' ? 'bg-[#3700b3]' : 'bg-black text-white'}
+      ${modeState == 'light' ? 'bg-[#9a90af]' : 'bg-black text-white'}
       `}
       >
         {/* Logo */}
@@ -58,7 +58,7 @@ export default function ResponsiveAppBar() {
               style={({ isActive }) => {
                 return isActive
                   ? {
-                      color: modeState == 'light' ? 'black' : 'blue',
+                      color: modeState == 'light' ? 'black' : 'white',
                       fontWeight: '800',
                     }
                   : {};
@@ -68,16 +68,14 @@ export default function ResponsiveAppBar() {
                  duration-500
                  ${
                    modeState == 'light'
-                     ? 'hover:underline hover:text-black text-white'
-                     : 'hover:underline hover:text-white text-[#00df9a]'
+                     ? 'hover:underline text-white'
+                     : 'hover:underline text-[#00df9a]'
                  }`}
             >
               {item.text}
             </NavLink>
           ))}
-          <li
-            className='py-3 '
-          >
+          <li className='py-3 '>
             <SwitchDemo></SwitchDemo>
           </li>
         </ul>
@@ -95,7 +93,7 @@ export default function ResponsiveAppBar() {
               ? `fixed md:hidden left-0 top-0 w-[40%] h-full ease-in-out duration-500
                   ${
                     modeState == 'light'
-                      ? 'bg-[#3700b3]'
+                      ? 'bg-[#9a90af]'
                       : 'bg-black text-white'
                   }
                 `
@@ -103,10 +101,12 @@ export default function ResponsiveAppBar() {
           }
         >
           {/* Mobile Logo */}
-          <h1 className='w-full text-lg sm:text-2xl sm:font-bold font-medium text-[#00df9a] m-2 sm:m-4'>
-            <u>
-              <i>BsW</i>
-            </u>{' '}
+          <h1 className={ `w-full text-lg sm:text-2xl sm:font-bold font-medium  m-2 sm:m-4 *
+            ${(modeState == "light")?"text-white":"text-[#00df9a]"}            
+            `}>
+            <span className='underline'>
+                BsW
+            </span>{' '}
             Movies
           </h1>
           {/* Mobile Navigation Items */}
@@ -120,7 +120,7 @@ export default function ResponsiveAppBar() {
                 style={({ isActive }) => {
                   return isActive
                     ? {
-                        color: modeState == 'light' ? 'black' : 'blue',
+                        color: modeState == 'light' ? 'black' : 'white',
                         fontWeight: '800',
                       }
                     : {};
@@ -129,8 +129,8 @@ export default function ResponsiveAppBar() {
                 className={` cursor-pointer rounded-xl px-5 py-3 duration-500
                  ${
                    modeState == 'light'
-                     ? 'hover:underline hover:text-black text-white'
-                     : 'hover:underline hover:text-white text-[#00df9a]'
+                     ? 'hover:underline text-white'
+                     : 'hover:underline text-[#00df9a]'
                  }`}
               >
                 {item.text}

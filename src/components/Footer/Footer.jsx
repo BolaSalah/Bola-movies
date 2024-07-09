@@ -5,13 +5,6 @@ import '../../App.css';
 
 export default function Footer() {
   const mode = useSelector((state) => state.mode.mode);
-  const [hoverText, setHoverText] = useState('');
-
-  useEffect(() => {
-    mode == 'light'
-      ? setHoverText('textHoverLight')
-      : setHoverText('textHoverDark');
-  });
 
   const AboutFooterItems = [
     { id: 1, text: 'About Us', url: '#' },
@@ -46,18 +39,13 @@ export default function Footer() {
           <div className='grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 mx-10'>
             {/* About-footer-part */}
             <div>
-              <h2
-                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
-              >
+              <h2 className={`mb-6 font-bold uppercase hover:cursor-text`}>
                 About
               </h2>
               <ul className='  font-medium'>
                 {AboutFooterItems.map((ele) => (
                   <li className='mb-4'>
-                    <a
-                      href={ele.url}
-                      className={`hover:underline ${hoverText}`}
-                    >
+                    <a href={ele.url} className={`hover:underline `}>
                       {ele.text}
                     </a>
                   </li>
@@ -66,9 +54,7 @@ export default function Footer() {
             </div>
             {/* Explore-footer-part */}
             <div>
-              <h2
-                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
-              >
+              <h2 className={`mb-6 font-bold uppercase hover:cursor-text`}>
                 Explore Our Site
               </h2>
               <ul className='  font-medium'>
@@ -79,7 +65,7 @@ export default function Footer() {
                       onClick={() => {
                         window.scroll({ top: 0 });
                       }}
-                      className={`hover:underline ${hoverText}`}
+                      className={`hover:underline`}
                     >
                       {ele.text}
                     </Link>
@@ -89,18 +75,13 @@ export default function Footer() {
             </div>
             {/* Legal-footer-part */}
             <div>
-              <h2
-                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
-              >
+              <h2 className={`mb-6 font-bold uppercase hover:cursor-text `}>
                 Privacy Policy
               </h2>
               <ul className='  font-medium'>
                 {LEGALFooterItems.map((ele) => (
                   <li className='mb-4'>
-                    <a
-                      href={ele.url}
-                      className={`hover:underline ${hoverText}`}
-                    >
+                    <a href={ele.url} className={`hover:underline`}>
                       {ele.text}
                     </a>
                   </li>
@@ -109,9 +90,7 @@ export default function Footer() {
             </div>
             {/* HelpCenter-footer-part */}
             <div>
-              <h2
-                className={`mb-6 font-bold uppercase hover:cursor-text ${hoverText}`}
-              >
+              <h2 className={`mb-6 font-bold uppercase hover:cursor-text `}>
                 Help center
               </h2>
               <ul className='  font-medium'>
@@ -120,7 +99,7 @@ export default function Footer() {
                     <Link
                       to={`${ele.url}`}
                       target='blank'
-                      className={`hover:underline ${hoverText}`}
+                      className={`hover:underline`}
                     >
                       {ele.text}
                     </Link>
@@ -129,36 +108,10 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className='px-4 py-6  md:flex md:items-center md:justify-between'>
-            <span className='text-sm text-gray-500 dark:text-gray-300 sm:text-center'>
-              © 2024 Bola Salah
-            </span>
-            <div className='flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse'>
-              <Link
-                target='blank'
-                className={`${hoverText}`}
-                to={'https://www.facebook.com/Bolasalah99/'}
-              >
-                <svg
-                  className='w-4 h-4'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='currentColor'
-                  viewBox='0 0 8 19'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z'
-                    clipRule='evenodd'
-                  />
-                </svg>
-                <span className='sr-only'>Facebook page</span>
-              </Link>
-              <Link
-                to={'https://github.com/BolaSalah'}
-                target='blanc'
-                className={`${hoverText}`}
-              >
+          <div className='py-6 flex items-center justify-center'>
+            <span className='text-sm'>© 2024 Bola Salah</span>
+            <div className='ms-4 md:mt-0 space-x-5 '>
+              <Link to={'https://github.com/BolaSalah'} target='blanc'>
                 <svg
                   className='w-4 h-4'
                   aria-hidden='true'
