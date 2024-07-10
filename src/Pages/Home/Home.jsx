@@ -5,9 +5,10 @@ import Moviewall from '@/components/MovieWall/Moviewall';
 export default function Home() {
   return (
     <>
-      <div className='px-4'>
+      <div className='px-12'>
         <CarouselDemo></CarouselDemo>
-        <Slider></Slider>
+        <Slider pageNumber='2' title='Fan favorites'></Slider>
+        <Slider pageNumber='20' title='Action & Adventure'></Slider>
         <Moviewall />
       </div>
     </>
