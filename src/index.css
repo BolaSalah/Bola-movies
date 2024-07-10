@@ -67,18 +67,15 @@
   }
 
   @layer base {
-    /* * { */
-      /* @apply border-border; */
-    /* } */
     body {
       @apply bg-background text-foreground;
     }
   }
 
   .cardEffectPerspective{
-    perspective: 2000px;
+    perspective: 1500px;
   }.cardEffect{
-    transform: rotateX(30deg) scale(0.9);
+    transform: rotateX(12deg) scale(0.9);
     transition: 1s;
   }
   .cardEffect:hover{
