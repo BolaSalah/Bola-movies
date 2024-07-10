@@ -33,7 +33,7 @@ export default function Moviewall() {
   };
 
   return (
-    <div className='flex justify-center flex-col py-10'>
+    <div className='flex justify-center flex-col md:mb-10 mb-3'>
       <div className='flex justify-center'>
         <div>
           {/* WHAT'S ON  */}
@@ -172,10 +172,10 @@ export default function Moviewall() {
             }}
           >
             <p
-              className={`flex justify-center px-10 py-3 rounded-lg ${
+              className={`flex justify-center px-10 py-3 rounded-lg duration-500 ${
                 modeState == 'light'
-                  ? 'bg-[#9a90af] hover:underline'
-                  : 'bg-[#1c7055] hover:underline'
+                  ? 'bg-[#9a90af] hover:text-white'
+                  : 'bg-[#1c7055] hover:text-black'
               } `}
             >
               More
