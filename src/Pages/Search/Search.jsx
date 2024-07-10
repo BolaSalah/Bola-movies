@@ -50,7 +50,7 @@ export default function Search() {
               type='text'
               value={searchValue}
               maxLength={40}
-              placeholder='Find Movies'
+              placeholder='Search m ovies'
               className={` w-full px-3 my-10 text-black py-3 border-2
                  ${
                    modeState == 'light'
@@ -62,7 +62,7 @@ export default function Search() {
                 movieName(e);
               }}
             />
-            <div className='absolute top-0 right-2 my-10 py-2 text-2xl text-black'>
+            <div className='absolute top-0 right-2 my-10 py-3 text-2xl text-black'>
               <IoSearch />
             </div>
           </div>
