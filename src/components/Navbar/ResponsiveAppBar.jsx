@@ -26,7 +26,7 @@ export default function ResponsiveAppBar() {
     <>
       <div
         className={`
-       sticky top-0 z-10 flex justify-between items-center py-0.5  mx-auto px-4  opacity-80 hover:opacity-90
+       sticky top-0 z-10 flex justify-between items-center py-0.5  mx-auto px-12
       ${modeState == 'light' ? 'bg-[#9a90af]' : 'bg-black text-white'}
       `}
       >
@@ -64,12 +64,11 @@ export default function ResponsiveAppBar() {
                   : {};
               }}
               key={item.id}
-              className={`mx-1 cursor-pointer px-5 py-3
-                 duration-500
+              className={`mx-1 cursor-pointer px-5 py-3 duration-500
                  ${
                    modeState == 'light'
-                     ? 'hover:underline text-white'
-                     : 'hover:underline text-[#00df9a]'
+                     ? 'hover:text-black text-white'
+                     : 'hover:text-white text-[#00df9a]'
                  }`}
             >
               {item.text}
@@ -130,8 +129,8 @@ export default function ResponsiveAppBar() {
                 className={` cursor-pointer rounded-xl px-5 py-3 duration-500
                  ${
                    modeState == 'light'
-                     ? 'hover:underline text-white'
-                     : 'hover:underline text-[#00df9a]'
+                     ? 'hover:text-black text-white'
+                     : 'hover:text-white text-[#00df9a]'
                  }`}
               >
                 {item.text}

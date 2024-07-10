@@ -23,7 +23,7 @@ export default function Footer() {
     { id: 3, text: 'Terms & Conditions', url: '#' },
     { id: 4, text: 'Terms of Use', url: '#' },
   ];
-  
+
   const HELPFooterItems = [
     { id: 1, text: 'Facebook', url: 'https://www.facebook.com/Bolasalah99/' },
     { id: 2, text: 'Discord Server', url: 'https://www.discord.com' },
@@ -33,18 +33,31 @@ export default function Footer() {
 
   return (
     <>
-      <footer className=''>
+      <footer>
         <div className='mx-auto w-full '>
           <div className='grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 mx-10'>
             {/* About-footer-part */}
             <div>
-              <h2 className={`mb-6 font-bold uppercase hover:cursor-text`}>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${
+                  mode == 'light' ? 'text-black' : 'text-[#00df9a]'
+                }`}
+              >
                 About
               </h2>
               <ul className='  font-medium'>
                 {AboutFooterItems.map((ele) => (
                   <li className='mb-4'>
-                    <a href={ele.url} className={`hover:underline `}>
+                    <a
+                      href={ele.url}
+                      className={` duration-500
+                       ${
+                         mode == 'light'
+                           ? 'hover:text-[#b0b3b2] text-black'
+                           : 'hover:text-white text-[#00df9a]'
+                       }
+                      `}
+                    >
                       {ele.text}
                     </a>
                   </li>
@@ -53,7 +66,11 @@ export default function Footer() {
             </div>
             {/* Explore-footer-part */}
             <div>
-              <h2 className={`mb-6 font-bold uppercase hover:cursor-text`}>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${
+                  mode == 'light' ? 'text-black' : 'text-[#00df9a]'
+                }`}
+              >
                 Explore Our Site
               </h2>
               <ul className='  font-medium'>
@@ -64,7 +81,11 @@ export default function Footer() {
                       onClick={() => {
                         window.scroll({ top: 0 });
                       }}
-                      className={`hover:underline`}
+                      className={` duration-500 ${
+                        mode == 'light'
+                          ? 'hover:text-[#b0b3b2] text-black'
+                          : 'hover:text-white text-[#00df9a]'
+                      }`}
                     >
                       {ele.text}
                     </Link>
@@ -74,13 +95,24 @@ export default function Footer() {
             </div>
             {/* Legal-footer-part */}
             <div>
-              <h2 className={`mb-6 font-bold uppercase hover:cursor-text `}>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${
+                  mode == 'light' ? 'text-black' : 'text-[#00df9a]'
+                }`}
+              >
                 Privacy Policy
               </h2>
               <ul className='  font-medium'>
                 {LEGALFooterItems.map((ele) => (
                   <li className='mb-4'>
-                    <a href={ele.url} className={`hover:underline`}>
+                    <a
+                      href={ele.url}
+                      className={` duration-500 ${
+                        mode == 'light'
+                          ? 'hover:text-[#b0b3b2] text-black'
+                          : 'hover:text-white text-[#00df9a]'
+                      }`}
+                    >
                       {ele.text}
                     </a>
                   </li>
@@ -89,7 +121,11 @@ export default function Footer() {
             </div>
             {/* HelpCenter-footer-part */}
             <div>
-              <h2 className={`mb-6 font-bold uppercase hover:cursor-text `}>
+              <h2
+                className={`mb-6 font-bold uppercase hover:cursor-text ${
+                  mode == 'light' ? 'text-black' : 'text-[#00df9a]'
+                }`}
+              >
                 Help center
               </h2>
               <ul className='  font-medium'>
@@ -98,7 +134,11 @@ export default function Footer() {
                     <Link
                       to={`${ele.url}`}
                       target='blank'
-                      className={`hover:underline`}
+                      className={` duration-500 ${
+                        mode == 'light'
+                          ? 'hover:text-[#b0b3b2] text-black'
+                          : 'hover:text-white text-[#00df9a]'
+                      }`}
                     >
                       {ele.text}
                     </Link>
@@ -108,11 +148,19 @@ export default function Footer() {
             </div>
           </div>
           <div className='py-6 flex items-center justify-center'>
-            <span className='text-sm'>© 2024 Bola Salah</span>
+            <span
+              className={`text-sm duration-500 ${
+                mode == 'dark' && 'text-[#00df9a]'
+              }`}
+            >
+              © 2024 Bola Salah
+            </span>
             <div className='ms-4 md:mt-0 space-x-5 '>
               <Link to={'https://github.com/BolaSalah'} target='blanc'>
                 <svg
-                  className='w-4 h-4'
+                  className={`w-4 h-4 duration-500 ${
+                    mode == 'dark' && 'text-[#00df9a] hover:text-white'
+                  }`}
                   aria-hidden='true'
                   xmlns='http://www.w3.org/2000/svg'
                   fill='currentColor'
