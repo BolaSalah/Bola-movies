@@ -57,11 +57,10 @@ export default function Movies() {
                   movie.poster_path &&
                   movie.overview && (
                     <div
-                      className='sm:w-2/4 md:w-1/4  sm:px-3 text-white rounded-lg cardEffectPerspective'
+                      className='sm:w-2/4 md:w-1/4 px-3 text-white rounded-lg cardEffectPerspective'
                       key={movie.id}
                     >
                       <button
-                        // className='bg-[#2f3856] rounded-lg'
                         className={` px-2 py- rounded-lg cardEffect ${
                           modeState == 'light'
                             ? 'bg-[#9a90af] text-black hover:'
@@ -124,11 +123,11 @@ export default function Movies() {
               <button
                 className={`flex justify-center px-10 py-3 rounded-lg  ${
                   modeState == 'light'
-                    ? 'bg-[#9a90af] text-black'
-                    : 'bg-[#15533f] text-white'
+                    ? 'bg-[#9a90af] text-black hover:text-white'
+                    : 'bg-[#15533f] text-white hover:text-black'
                 } 
                     ${
-                      counter == 1 ? ' cursor-not-allowed text-[#626565bb]' : ''
+                      counter == 1 ? ' cursor-not-allowed !text-[#626565bb]' : ''
                     }`}
                 value={'previous'}
                 onClick={(e) => {
@@ -151,8 +150,8 @@ export default function Movies() {
               <button
                 className={`flex justify-center px-10 py-3 rounded-lg  ${
                   modeState == 'light'
-                    ? 'bg-[#9a90af] text-black'
-                    : 'bg-[#15533f] text-white'
+                    ? 'bg-[#9a90af] text-black hover:text-white'
+                    : 'bg-[#15533f] text-white hover:text-black'
                 } `}
                 value={'next'}
                 onClick={(e) => {

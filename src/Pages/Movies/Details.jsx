@@ -112,7 +112,7 @@ useEffect(() => {
         </div>
 
         {/* cast of movie Section */}
-        <div className='Cast-section mt-8'>
+        <div className='Cast-section mt-8 text-center'>
           <div className=' text-sm md:text-lg font-bold ms-6 mb-8'>
             {' '}
             Cast of ( {movie.title} )
