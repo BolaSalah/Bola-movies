@@ -23,7 +23,7 @@ export function Slider({ pageNumber, title }) {
     await instance
       .get('movie/popular', { params: { page: pageNumber } })
       .then((res) => {
-        setMoviesList(res.data.results.slice(1,));
+        setMoviesList(res.data.results.slice(4,));
       })
       .catch((err) => {
         console.log(err);

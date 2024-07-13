@@ -11,7 +11,7 @@ export default function Moviewall() {
   // get movie
   const getmovie = async () => {
     await instance
-      .get('movie/popular', { params: { page: 5 } })
+      .get('movie/popular', { params: { page: 7 } })
       .then((res) => {
         setMovieOnMovieWall(res.data.results.slice(0, 16));
       })

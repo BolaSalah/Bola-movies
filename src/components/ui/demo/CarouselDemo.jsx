@@ -19,7 +19,7 @@ export function CarouselDemo() {
   // get movie
   const getmovie = async () => {
     await instance
-      .get('movie/popular', { params: { page: 12 } })
+      .get('movie/popular', { params: { page: 5 } })
       .then((res) => {
         setMoviesList(res.data.results);
       })
