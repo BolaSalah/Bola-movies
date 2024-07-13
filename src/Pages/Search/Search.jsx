@@ -50,7 +50,7 @@ export default function Search() {
               type='text'
               value={searchValue}
               maxLength={40}
-              placeholder='Search m ovies'
+              placeholder='Search movies'
               className={` w-full px-3 my-10 text-black py-3 border-2
                  ${
                    modeState == 'light'
