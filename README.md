@@ -95,6 +95,5 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
     <img src="https://github.com/BolaSalah/Movies-react/blob/main/public/s-movies.png" alt="movies" />
     <img src="https://github.com/BolaSalah/Movies-react/blob/main/public/s-pagination.png" alt="pagination" />
     <img src="https://github.com/BolaSalah/Movies-react/blob/main/public/s-search.png" alt="search" />
-    <img src="" alt="tailwindcss" />
 </div>
 
