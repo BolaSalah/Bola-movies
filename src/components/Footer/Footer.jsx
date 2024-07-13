@@ -46,8 +46,8 @@ export default function Footer() {
                 About
               </h2>
               <ul className='  font-medium'>
-                {AboutFooterItems.map((ele) => (
-                  <li className='mb-4'>
+                {AboutFooterItems.map((ele,index) => (
+                  <li className='mb-4' key={index}>
                     <a
                       href={ele.url}
                       className={` duration-500
@@ -74,8 +74,8 @@ export default function Footer() {
                 Explore Our Site
               </h2>
               <ul className='  font-medium'>
-                {ExploreFooterItems.map((ele) => (
-                  <li className='mb-4'>
+                {ExploreFooterItems.map((ele,index) => (
+                  <li className='mb-4' key={index}>
                     <Link
                       to={`${ele.url}`}
                       onClick={() => {
@@ -103,8 +103,8 @@ export default function Footer() {
                 Privacy Policy
               </h2>
               <ul className='  font-medium'>
-                {LEGALFooterItems.map((ele) => (
-                  <li className='mb-4'>
+                {LEGALFooterItems.map((ele,index) => (
+                  <li className='mb-4' key={index}>
                     <a
                       href={ele.url}
                       className={` duration-500 ${
@@ -129,8 +129,8 @@ export default function Footer() {
                 Help center
               </h2>
               <ul className='  font-medium'>
-                {HELPFooterItems.map((ele) => (
-                  <li className='mb-4'>
+                {HELPFooterItems.map((ele,index) => (
+                  <li className='mb-4' key={index}>
                     <Link
                       to={`${ele.url}`}
                       target='blank'
