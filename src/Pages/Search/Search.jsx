@@ -150,7 +150,7 @@ export default function Search() {
           {searchValue.length > 1 && movieList.length == 0 && (
             <div className=' w-full md:text-[32px] sm:text-lg text-[10px] flex-wrap mt-3 my-12 flex flex-col justify-center items-center'>
               <span className='text-red-700 mb-3'>
-                There is no movie with this name :{' '}
+                There is no movie with this name {' '}
               </span>
               <span>({searchValue})</span>
             </div>
