@@ -41,9 +41,6 @@ export default function ResponsiveAppBar() {
           ${modeState == 'light' ? 'text-white' : 'text-[#00df9a]'}
           `}
           >
-            <u>
-              <i>BsW</i>
-            </u>{' '}
             Movies
           </Link>
         </span>
@@ -107,7 +104,7 @@ export default function ResponsiveAppBar() {
             }            
             `}
           >
-            <span className='underline'>BsW</span> Movies
+            Movies
           </h1>
           {/* Mobile Navigation Items */}
           <div className='flex flex-col mx-2  '>
