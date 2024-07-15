@@ -46,12 +46,14 @@ export default function Moviewall() {
             <div className='mb-3 ms-3  text-[25px] font-bold'>WHAT'S ON</div>
           </div>
           {/* movies wall */}
-          <div className='grid gap-1 mx-auto'>
+          <div className='grid gap-1 mx-auto' data-aos='fade-up'>
             {movieOnMovieWall.map((movie, _index) => (
               <>
                 {_index == 0 && (
                   <div
                     key={_index}
+                    data-aos='zoom-in'
+                    data-aos-delay='300'
                     className='col-start-1 col-span-2 row-start-1 row-span-2 relative'
                   >
                     <img
@@ -104,6 +106,8 @@ export default function Moviewall() {
                 {_index == 14 && (
                   <div
                     key={_index}
+                    data-aos='zoom-in'
+                    data-aos-delay='300'
                     className=' bg-red-500 row-start-1 row-span-2 col-start-5 col-span-2 relative'
                   >
                     <img
@@ -133,7 +137,9 @@ export default function Moviewall() {
                 )}
                 {_index == 15 && (
                   <div
-                    key={_index}
+                    key={ _index }
+                    data-aos='zoom-in'
+                    data-aos-delay='300'
                     className=' bg-red-500 row-start-3 row-span-2 col-start-3 col-span-2 relative'
                   >
                     <img

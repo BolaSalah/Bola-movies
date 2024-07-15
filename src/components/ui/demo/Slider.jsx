@@ -67,6 +67,7 @@ export function Slider({ pageNumber, title }) {
           <CarouselContent>
             { moviesList.map((movie, index) => (
               <CarouselItem
+                data-aos="fade-left"
                 key={ index }
                 className=' lg:w-[22%] md:w-[27%] sm:w-[30%] w-[40%]  md:h-72 '
               >

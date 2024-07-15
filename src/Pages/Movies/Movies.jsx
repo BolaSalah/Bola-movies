@@ -57,6 +57,8 @@ export default function Movies() {
                   movie.poster_path &&
                   movie.overview && (
                     <div
+                      data-aos='fade-up'
+                      data-aos-delay='200'
                       className='sm:w-2/4 md:w-1/4 px-3 text-white rounded-lg cardEffectPerspective'
                       key={movie.id}
                     >
@@ -127,7 +129,9 @@ export default function Movies() {
                     : 'bg-[#15533f] text-white hover:text-black'
                 } 
                     ${
-                      counter == 1 ? ' cursor-not-allowed !text-[#626565bb]' : ''
+                      counter == 1
+                        ? ' cursor-not-allowed !text-[#626565bb]'
+                        : ''
                     }`}
                 value={'previous'}
                 onClick={(e) => {

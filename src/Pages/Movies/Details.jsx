@@ -56,6 +56,8 @@ useEffect(() => {
         {/* Hero Section */}
         <div className='Hero-section flex items-center md:flex-row flex-col mx-auto my-12 w-12/12'>
           <img
+            data-aos='fade-right'
+            data-aos-delay='200'
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.title}
             className=' h-[400px] w-10/12 mb-6 mx-auto  md:w-4/12  rounded-xl'

@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <div className='px-12'>
         <CarouselDemo></CarouselDemo>
-        <Slider pageNumber='9' title='Fan favorites'></Slider>
+        <Slider pageNumber='4' title='Fan favorites'></Slider>
         <Slider pageNumber='2' title='Action & Adventure'></Slider>
         <Moviewall />
       </div>
