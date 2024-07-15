@@ -139,7 +139,7 @@ export default function Moviewall() {
                   <div
                     key={ _index }
                     data-aos='zoom-in'
-                    data-aos-delay='300'
+                    data-aos-delay='500'
                     className=' bg-red-500 row-start-3 row-span-2 col-start-3 col-span-2 relative'
                   >
                     <img

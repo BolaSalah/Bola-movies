@@ -62,7 +62,11 @@ useEffect(() => {
             alt={movie.title}
             className=' h-[400px] w-10/12 mb-6 mx-auto  md:w-4/12  rounded-xl'
           />
-          <div className='flex flex-col mx-12'>
+          <div
+            className='flex flex-col mx-12'
+            data-aos='fade-up'
+            data-aos-delay='200'
+          >
             <div className='text-2xl font-bold mb-5 justify-center flex md:block'>
               {movie.title}
             </div>
